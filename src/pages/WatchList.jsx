@@ -1,10 +1,10 @@
 import React from 'react';
 import { TopBar } from '../components/Topbar/Topbar';
-import { useState, useEffect } from 'react';
-import { Button } from 'components/Button/Button.styled';
+// import { useState, useEffect } from 'react';
+// import { Button } from 'components/Button/Button.styled';
 
 const WatchList = () => {
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]);
 
   return (
     <div>

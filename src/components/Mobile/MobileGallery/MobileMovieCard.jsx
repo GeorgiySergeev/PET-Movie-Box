@@ -6,7 +6,7 @@ import {
 } from './MobileMovieCard.styled';
 
 import defaultImg from '../../../assets/default-img/no-available-image.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IconAddToListStyled } from 'components/MovieCard/MovieCard.styled';
 
 export const MobileMovieCard = ({
@@ -17,7 +17,7 @@ export const MobileMovieCard = ({
   relise = 'no info',
 }) => {
   const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <Link to={`/movies/${id}`}>

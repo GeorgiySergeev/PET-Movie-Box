@@ -68,9 +68,9 @@ const Home = () => {
     getTopMovies();
   }, [range]);
 
-  const onRangeChange = value => {
-    setSearchParams({ range: value });
-  };
+  // const onRangeChange = value => {
+  //   setSearchParams({ range: value });
+  // };
 
   const handleSubmit = value => {
     const query = value !== '' ? { query: value } : {};
@@ -82,6 +82,7 @@ const Home = () => {
 
   return (
     <>
+      {isLoading && <h2>Loading</h2>}
       {shouldRenderTopbar ? (
         <TopBar title={'Welcome to'} span={'MovieBox'} text={text}></TopBar>
       ) : null}

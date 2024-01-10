@@ -4,8 +4,8 @@ import {
   Autoplay,
   Navigation,
   Pagination,
-  Scrollbar,
-  A11y,
+  // Scrollbar,
+  // A11y,
 } from 'swiper/modules';
 import 'swiper/css/bundle';
 // import 'swiper/css/navigation';
