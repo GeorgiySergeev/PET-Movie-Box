@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 // import { TopBar } from 'components/Topbar/Topbar';
-import { MobileHeader } from 'components/Mobile/Header/MobileHeader';
+import { Header } from 'components/Header/Header';
 import { Container } from 'components/App/App.styled';
 
 // import { Footer } from 'components/Footer/Footer';
@@ -31,8 +31,8 @@ const Layout = () => {
 
   return (
     <>
+      <Header />
       <Container className="Main-Container">
-        <MobileHeader />
         {shouldRenderSidebar ? <Sidebar /> : null}
         {/* <TopBar /> */}
         <Suspense fallback={<></>}>

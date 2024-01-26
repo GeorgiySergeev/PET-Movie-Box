@@ -6,6 +6,11 @@ import Layout from 'components/Layout/Layout';
 
 const Home = lazy(() => import('pages/Home'));
 const WatchList = lazy(() => import('pages/WatchList'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Genres = lazy(() => import('pages/Genres'));
+const TvShows = lazy(() => import('pages/TvShows'));
+
+const NotFound = lazy(() => import('pages/404page'));
 
 export const App = () => {
   return (
@@ -13,8 +18,12 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="movies/:movieId/*" element={<MovieDetails />} />
+        <Route path="genres/:genre" element={<Genres />} />
         <Route path="/watchlist" element={<WatchList />} />
+        <Route path="/tvshows" element={<TvShows />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
     // </Container>
   );

@@ -5,8 +5,8 @@ export const IconAddToListStyled = styled(IconAddToList)`
   position: absolute;
   top: 0;
   right: 0;
-  width: 12px;
-  height: 17px;
+  width: 18px;
+  height: 23px;
 
   @media screen and (min-width: 768px) {
     left: 0px;

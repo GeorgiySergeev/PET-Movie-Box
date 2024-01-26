@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
 import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
-// import { GenreList } from 'components/GenreList/GenreList';
+import LoginButton from 'components/LoginButton/LoginButton';
+import { GenreList } from 'components/GenreList/GenreList';
 import {
   SidebarContainer,
   Nav,
@@ -31,18 +32,19 @@ export const Sidebar = () => {
             <p>Home</p>
           </NavButton>
         </NavLink>
-        <NavLink to="/movies">
+        <NavLink to="#">
           <NavButton>
             <SearchIcon />
-            <p>Search movies</p>
+            <p>Setting</p>
           </NavButton>
         </NavLink>
       </Nav>
       <Link to={'/watchlist'}>
         <AddToListButton>My watchlist</AddToListButton>
       </Link>
-      {/* {!shouldShowComponent && <GenreList></GenreList>} */}
+      {!shouldShowComponent && <GenreList></GenreList>}
       {shouldShowComponent && <div>Reel</div>}
+      <LoginButton />
     </SidebarContainer>
   );
 };

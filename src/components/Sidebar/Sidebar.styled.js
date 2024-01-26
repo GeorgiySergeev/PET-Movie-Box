@@ -5,10 +5,10 @@ export const SidebarContainer = styled.div`
   position: sticky;
   top: 0px;
 
-  /* width: 321px; */
+  width: 269px;
 
   padding: 68px 15px 15px 15px;
-  height: 755px;
+  height: 1020px;
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;

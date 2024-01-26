@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllTrending } from 'servises/api';
-import { searchMovie } from 'servises/api';
 import { GalleryTitle } from 'components/GalleryTitle/GalleryTitle';
 // import { MobileHeader } from 'components/Mobile/Header/MobileHeader';
 import { Gallery } from 'components/Gallery/Gallery';
@@ -11,31 +10,33 @@ import { SearchForm } from 'components/SearchForm/SearchForm';
 import { TopBar } from 'components/Topbar/Topbar';
 
 import text from '../servises/constant';
+import { selectLoading, selectMovies } from '../redux/movies/selectors';
+import {
+  fetchTopMovies,
+  fetchSearchedMovies,
+} from '../redux/movies/operations';
 
 const Home = () => {
   const [shouldRenderTopbar, setShouldRenderTopbar] = useState(false);
   const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams('');
 
-  const [isLoading, setLoading] = useState(false);
-  const [movies, setMovies] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const isLoading = useSelector(selectLoading);
+  const movies = useSelector(selectMovies);
+  const dispatch = useDispatch();
+
   const range = searchParams.get('range') || 'day';
 
   useEffect(() => {
+    dispatch(fetchTopMovies(range));
+  }, [dispatch, range, searchParams]);
+
+  useEffect(() => {
     const searchQuery = searchParams.get('query') ?? '';
+
     if (!searchQuery) return;
-
-    const getMovies = async () => {
-      try {
-        const { results } = await searchMovie(searchQuery, page);
-
-        setMovies(results);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    getMovies();
-  }, [page, searchParams]);
+    dispatch(fetchSearchedMovies(searchQuery, page));
+  }, [page, searchParams, dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,32 +53,10 @@ const Home = () => {
     };
   }, []);
 
-  useEffect(() => {
-    setLoading(true);
-
-    const getTopMovies = async () => {
-      try {
-        const data = await getAllTrending(range);
-        setMovies(data);
-      } catch (error) {
-        console.log(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getTopMovies();
-  }, [range]);
-
-  // const onRangeChange = value => {
-  //   setSearchParams({ range: value });
-  // };
-
   const handleSubmit = value => {
     const query = value !== '' ? { query: value } : {};
     setSearchParams(query);
-
     setPage(1);
-    setMovies([]);
   };
 
   return (

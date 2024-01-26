@@ -70,3 +70,9 @@ export const sortByGenre = async (genre, page) => {
 
   return response.data;
 };
+
+export const getAllTrendingTvShow = async period => {
+  const response = await axios(`${BASE_URL}/trending/tv/${period}`);
+  //   console.log(response.data.results);
+  return response.data.results;
+};
