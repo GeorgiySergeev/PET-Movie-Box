@@ -21,7 +21,7 @@ export const GenreList = () => {
       <GenreListStyled>
         {genre.map(({ id, name }, index) => {
           return (
-            <NavLink to={`/genres/${name}`} key={id}>
+            <NavLink to={`/genres/${id}`} key={id}>
               <li>{name}</li>
             </NavLink>
           );

@@ -21,7 +21,6 @@ const tvshowSlice = createSlice({
     builder
       .addCase(API.fetchTopTvShow.pending, handlePending)
       .addCase(API.fetchTopTvShow.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.isLoading = false;
         state.error = null;
         state.tvshow = action.payload;

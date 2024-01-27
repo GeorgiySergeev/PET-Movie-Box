@@ -43,6 +43,7 @@ export const getGenre = async () => {
 };
 
 export const sortByGenre = async (genre, page) => {
+  const adjustedPage = page + 1;
   // console.log('sortByGenre called with genre:', genre, 'and page:', page);
 
   const options = {
@@ -52,7 +53,7 @@ export const sortByGenre = async (genre, page) => {
       include_adult: 'false',
       include_video: 'false',
       language: 'en-US',
-      page,
+      page: adjustedPage,
       sort_by: 'popularity.desc',
       with_genres: genre,
     },
@@ -68,7 +69,7 @@ export const sortByGenre = async (genre, page) => {
     headers: options.headers,
   });
 
-  return response.data;
+  return response;
 };
 
 export const getAllTrendingTvShow = async period => {

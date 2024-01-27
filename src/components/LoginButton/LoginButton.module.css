@@ -1,10 +1,10 @@
 .loginContainer {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   color: black;
   display: flex;
-  align-items: center;
-  gap: 55px;
+  align-items: end;
+  gap: 5px;
   /* justify-content: space-around; */
-  font-size: 32px;
-  padding: 10px;
+  font-size: 18px;
+  padding: 5px;
 }

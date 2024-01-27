@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
 import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
-import LoginButton from 'components/LoginButton/LoginButton';
+
 import { GenreList } from 'components/GenreList/GenreList';
 import {
   SidebarContainer,
@@ -11,6 +11,7 @@ import {
   NavButton,
   AddToListButton,
 } from './Sidebar.styled';
+// import Filter from 'components/Filter/ Filter';
 
 export const Sidebar = () => {
   const [shouldShowComponent, setShouldShowComponent] = useState(true);
@@ -44,7 +45,7 @@ export const Sidebar = () => {
       </Link>
       {!shouldShowComponent && <GenreList></GenreList>}
       {shouldShowComponent && <div>Reel</div>}
-      <LoginButton />
+      {/* <Filter /> */}
     </SidebarContainer>
   );
 };
