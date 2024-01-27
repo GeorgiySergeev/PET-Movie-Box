@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 
-// import Pagination from '../components/Pagination/Pagination';
-import ReactPaginate from 'react-paginate';
-import css from '../components/Pagination/Pagination.module.css';
+import Pagination from '../components/Pagination/Pagination';
+// import ReactPaginate from 'react-paginate';
+// import css from '../components/Pagination/Pagination.module.css';
 
 import { LoadingSpinner } from 'components/Loader/Loader';
 import { TopBar } from '../components/Topbar/Topbar';
@@ -19,7 +19,7 @@ const Genres = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   const { id } = useParams();
-  const itemsPerPage = 20;
+  // const itemsPerPage = 20;
 
   const handlePageChange = page => {
     setPage(page);
@@ -66,15 +66,16 @@ const Genres = () => {
         <Gallery gallery={genres}></Gallery>
         {/*  */}
       </Container>
-      <ReactPaginate
+      {/* <ReactPaginate
         className={css.pagination}
         pageCount={Math.ceil(totalPages / itemsPerPage)}
         pageRangeDisplayed={10}
         marginPagesDisplayed={5}
         onPageChange={({ selected }) => handlePageChange(selected)}
         containerClassName={'pagination'}
-        activeClassName={'active'}
-      />
+        activeClassName={'active-pag'}
+      /> */}
+      <Pagination count={totalPages} onChange={handlePageChange} />
     </div>
   );
 };

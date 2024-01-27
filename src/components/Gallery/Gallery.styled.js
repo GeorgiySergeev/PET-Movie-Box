@@ -14,7 +14,6 @@ export const GalleryList = styled.ul`
   list-style: none;
   justify-content: space-between;
   row-gap: 55px;
-  padding-bottom: 80px;
 
   @media screen and (min-width: 768px) {
     display: flex;
