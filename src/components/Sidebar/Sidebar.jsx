@@ -11,7 +11,7 @@ import {
   NavButton,
   AddToListButton,
 } from './Sidebar.styled';
-// import Filter from 'components/Filter/ Filter';
+import Filter from '../Filter/Filter';
 
 export const Sidebar = () => {
   const [shouldShowComponent, setShouldShowComponent] = useState(true);
@@ -19,7 +19,7 @@ export const Sidebar = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    const shouldShow = path.includes('/watch-list');
+    const shouldShow = path.includes('/watchlist');
     setShouldShowComponent(shouldShow);
   }, [location.pathname]);
 
@@ -45,7 +45,7 @@ export const Sidebar = () => {
       </Link>
       {!shouldShowComponent && <GenreList></GenreList>}
       {shouldShowComponent && <div>Reel</div>}
-      {/* <Filter /> */}
+      <Filter />
     </SidebarContainer>
   );
 };

@@ -8,9 +8,10 @@ import Pagination from '../components/Pagination/Pagination';
 import { LoadingSpinner } from 'components/Loader/Loader';
 import { TopBar } from '../components/Topbar/Topbar';
 import { GoToBack } from 'components/GoToBack/GoToBack';
-import { sortByGenre } from 'servises/api';
+import { getFilteredMovies } from 'servises/api';
 import { Gallery } from 'components/Gallery/Gallery';
 import { Container } from 'components/MovieDetailsCard/MovieDetailsCard.styled';
+// import { useSelector } from 'react-redux';
 
 const Genres = () => {
   const [isLoading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ const Genres = () => {
 
     const getGenre = async () => {
       try {
-        const data = await sortByGenre(id, page);
+        const data = await getFilteredMovies(id, page);
 
         if (isMounted) {
           setGenres(data.data.results);
@@ -66,15 +67,7 @@ const Genres = () => {
         <Gallery gallery={genres}></Gallery>
         {/*  */}
       </Container>
-      {/* <ReactPaginate
-        className={css.pagination}
-        pageCount={Math.ceil(totalPages / itemsPerPage)}
-        pageRangeDisplayed={10}
-        marginPagesDisplayed={5}
-        onPageChange={({ selected }) => handlePageChange(selected)}
-        containerClassName={'pagination'}
-        activeClassName={'active-pag'}
-      /> */}
+
       <Pagination count={totalPages} onChange={handlePageChange} />
     </div>
   );

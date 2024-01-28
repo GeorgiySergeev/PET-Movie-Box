@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const GallerySection = styled.section`
+  padding-bottom: 60px;
   width: 100%;
   /* height: 80vh; */
 

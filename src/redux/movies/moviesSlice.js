@@ -4,6 +4,7 @@ import * as API from './operations';
 
 const appState = {
   movies: [],
+  totalPage: null,
 
   isLoading: true,
   error: null,
@@ -40,11 +41,16 @@ const movieSlise = createSlice({
       .addCase(API.fetchTopMovies.rejected, handleRejected)
       .addCase(API.fetchSearchedMovies.pending, handlePending)
       .addCase(API.fetchSearchedMovies.fulfilled, (state, action) => {
+        console.log('action', action);
         state.isLoading = false;
         state.error = null;
         state.movies = action.payload;
       })
-      .addCase(API.fetchSearchedMovies.rejected, handleRejected);
+      .addCase(API.fetchSearchedMovies.rejected, handleRejected)
+      .addCase(API.fetchFilteredMovies.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.movies = action.payload;
+      });
   },
 });
 

@@ -3,7 +3,6 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/system';
 
-// Создаем стилизованный компонент с помощью styled
 const CustomPagination = styled(Pagination)({
   // background: 'red',
   '& ul': {
@@ -13,14 +12,11 @@ const CustomPagination = styled(Pagination)({
 
 export default function BasicPagination({ count, onChange }) {
   const onChangeHandler = (event, page) => {
-    // Ваш код обработки изменения страницы
-    console.log(`Page changed to ${page}`);
     onChange(page);
   };
 
   return (
-    <Stack spacing={2}>
-      {/* Используем стилизованный компонент вместо обычного Pagination */}
+    <Stack spacing={5}>
       <CustomPagination
         count={count}
         color="primary"

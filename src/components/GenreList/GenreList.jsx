@@ -1,6 +1,6 @@
 import { getGenre } from 'servises/api';
 import { useEffect, useState } from 'react';
-import { GenreListWrapper, GenreListStyled } from './GenreList.styled';
+import { GenreListWrapper, GenreListStyled, Button } from './GenreList.styled';
 import { NavLink } from 'react-router-dom';
 // import { Scrollbar } from 'react-scrollbars-custom';
 
@@ -21,9 +21,9 @@ export const GenreList = () => {
       <GenreListStyled>
         {genre.map(({ id, name }, index) => {
           return (
-            <NavLink to={`/genres/${id}`} key={id}>
-              <li>{name}</li>
-            </NavLink>
+            <Button key={id}>
+              <NavLink to={`/genres/${id}`}>{name}</NavLink>
+            </Button>
           );
         })}
       </GenreListStyled>

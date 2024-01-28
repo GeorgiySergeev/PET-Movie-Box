@@ -12,7 +12,7 @@ export const getAllTrending = async period => {
   return response.data.results;
 };
 
-export async function searchMovie(query, page) {
+export async function searchMovie({ query, page }) {
   const response = await axios.get(
     `${BASE_URL}/search/movie?&query=${query}&page=${page}`
   );
@@ -42,7 +42,7 @@ export const getGenre = async () => {
   return response.data;
 };
 
-export const sortByGenre = async (genre, page) => {
+export const getFilteredMovies = async (genre, page) => {
   const adjustedPage = page + 1;
   // console.log('sortByGenre called with genre:', genre, 'and page:', page);
 
@@ -56,6 +56,9 @@ export const sortByGenre = async (genre, page) => {
       page: adjustedPage,
       sort_by: 'popularity.desc',
       with_genres: genre,
+      // 'release_date.gte': data.from,
+      // 'release_date.lte': data.to,
+      //  primary_release_year: data.year,
     },
     headers: {
       accept: 'application/json',
@@ -77,3 +80,37 @@ export const getAllTrendingTvShow = async period => {
   //   console.log(response.data.results);
   return response.data.results;
 };
+
+// export const sortByGenreRedux = async data => {
+//   const adjustedPage = data.page + 1;
+//   // console.log('sortByGenre called with genre:', genre, 'and page:', page);
+
+//   const options = {
+//     method: 'GET',
+//     url: 'https://api.themoviedb.org/3/discover/movie',
+//     params: {
+//       include_adult: 'false',
+//       include_video: 'false',
+//       language: 'en-US',
+//       page: adjustedPage,
+//       sort_by: 'popularity.desc',
+//       with_genres: data.genre,
+//       'release_date.gte': data.from,
+//       'release_date.lte': data.to,
+//       primary_release_year: data.year,
+//     },
+//     headers: {
+//       accept: 'application/json',
+//       Authorization:
+//         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzBlN2Y3NTFkZTU4OWEyMTRjN2E3Y2IyNTZkZGZlYyIsInN1YiI6IjY1NzlhY2ZmNGJmYTU0NWNmZDc4ZjJkMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrQqms9_kLUcLnzlIObzup4rDnJS1QBqZV9NRJ0lfE4',
+//     },
+//   };
+//   const response = await axios(options.url, {
+//     method: 'GET',
+//     params: options.params,
+//     headers: options.headers,
+//   });
+//   console.log(response.data.results);
+
+//   return response.data.results;
+// };

@@ -113,3 +113,6 @@ button {
   cursor: pointer;
 }
 
+.active {
+  color: #f33f3f;
+ }
