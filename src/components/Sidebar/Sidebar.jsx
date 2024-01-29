@@ -8,7 +8,7 @@ import {
   HeadTitle,
   AddToListButton,
 } from './Sidebar.styled';
-import Filter from '../Filter/Filter';
+// import Filter from '../Filter/Filter';
 
 export const Sidebar = () => {
   const [shouldShowComponent, setShouldShowComponent] = useState(true);
@@ -29,7 +29,7 @@ export const Sidebar = () => {
       </Link>
       {!shouldShowComponent && <GenreList></GenreList>}
       {shouldShowComponent && <div>Reel</div>}
-      <Filter />
+      {/* <Filter /> */}
     </SidebarContainer>
   );
 };

@@ -18,6 +18,7 @@ const Home = () => {
 
   const isLoading = useSelector(selectLoading);
   const movies = useSelector(selectMovies);
+  // console.log('movies', movies);
   const dispatch = useDispatch();
 
   // const [query, setQuery] = useSearchParams();
@@ -50,7 +51,7 @@ const Home = () => {
         <TopBar title={'Welcome to'} span={'MovieBox'} text={text}></TopBar>
       ) : null}
       {/* <SearchForm /> */}
-      <GalleryTitle text={'Popular movies right now'} />
+      <GalleryTitle text={'Trending movies'} />
       <Gallery gallery={movies}></Gallery>
     </>
   );

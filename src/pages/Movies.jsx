@@ -1,19 +1,28 @@
-// import { useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-// import { searchMovie } from 'servises/api';
-// import { TopBar } from '../components/Topbar/Topbar';
-// import { SearchForm } from '../components/SearchForm/SearchForm';
-// import { Gallery } from '../components/Gallery/Gallery';
+import { Gallery } from '../components/Gallery/Gallery';
+import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../components/Pagination/Pagination';
+import { selectMovies, selectTotalPage } from '../redux/movies/selectors';
+import { useEffect, useState } from 'react';
+import { fetchTopRared } from '../redux/movies/operations';
 
 const Movies = () => {
   // const [movies, setMovies] = useState([]);
-  // const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
+  const movies = useSelector(selectMovies);
+  const totalPages = useSelector(selectTotalPage);
 
-  // const [totalPages, setTotalPages] = useState(1);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTopRared(page));
+  }, [dispatch, page]);
+
+  const handlePageChange = page => {
+    setPage(page);
+  };
 
   return (
-    <div style={{ width: 998, padding: 60 }}>
+    <>
       <h1>Top Rated Movies</h1>
       {/* <TopBar
         title={'Movie search on'}
@@ -24,9 +33,9 @@ const Movies = () => {
       />
       <SearchForm onSubmit={handleSubmit}></SearchForm> */}
 
-      {/* <Gallery gallery={movies}></Gallery> */}
-      <Pagination />
-    </div>
+      <Gallery gallery={movies}></Gallery>
+      <Pagination count={totalPages ?? 10} onChange={handlePageChange} />
+    </>
   );
 };
 

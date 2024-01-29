@@ -48,9 +48,27 @@ const movieSlise = createSlice({
       })
       .addCase(API.fetchSearchedMovies.rejected, handleRejected)
       .addCase(API.fetchFilteredMovies.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.movies = action.payload;
-      });
+      })
+      .addCase(API.fetchTopRared.pending, handlePending)
+      .addCase(API.fetchTopRared.fulfilled, (state, action) => {
+        console.log('action.payload', action.payload);
+        state.isLoading = false;
+        state.error = null;
+        state.movies = action.payload.results;
+        state.totalPage = action.payload.total_pages;
+      })
+      .addCase(API.fetchTopRared.rejected, handleRejected)
+      .addCase(API.fetchTvShow.pending, handlePending)
+      .addCase(API.fetchTvShow.fulfilled, (state, action) => {
+        // console.log('action.payload', action.payload);
+        state.isLoading = false;
+        state.error = null;
+        state.movies = action.payload;
+        state.totalPage = action.payload.total_pages;
+      })
+      .addCase(API.fetchTvShow.rejected, handleRejected);
   },
 });
 

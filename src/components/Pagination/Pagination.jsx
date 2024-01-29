@@ -4,9 +4,12 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/system';
 
 const CustomPagination = styled(Pagination)({
-  // background: 'red',
   '& ul': {
     justifyContent: 'center',
+  },
+  '& button': {
+    color: 'white',
+    fontSize: 18,
   },
 });
 

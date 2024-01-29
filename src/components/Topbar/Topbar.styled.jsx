@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const TopBarWrapper = styled.div`
   position: relative;
   max-width: 1058px;
+  height: 350px;
   margin-bottom: 25px;
   border-radius: 8px;
   /* padding: 20px; */
@@ -31,7 +32,7 @@ export const TopBarTitle = styled.h1`
   color: #e1e1e1;
   font-family: 'Archivo', sans-serif;
 
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   z-index: 12;
 
   @media screen and (min-width: 1280px) {
@@ -53,7 +54,7 @@ export const TopBarText = styled.p`
 
   @media screen and (min-width: 1280px) {
     font-size: 38px;
-    top: 200px;
+    /* top: 200px; */
     width: 780px;
     line-height: 48px;
   }

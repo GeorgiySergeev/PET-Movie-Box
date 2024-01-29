@@ -23,7 +23,16 @@ export const Gallery = ({ gallery }) => {
     <GallerySection>
       <GalleryList>
         {gallery.map(
-          ({ id, poster_path, title, name, popularity, release_date }) => {
+          ({
+            id,
+            poster_path,
+            title,
+            name,
+            popularity,
+            release_date,
+            first_air_date,
+            vote_average,
+          }) => {
             const MovieComponent = isMobile ? MobileMovieCard : MovieCard;
 
             return (
@@ -34,6 +43,8 @@ export const Gallery = ({ gallery }) => {
                 title={title || name}
                 rating={popularity}
                 relise={release_date}
+                first_air_date={first_air_date}
+                vote_average={vote_average}
               />
             );
           }
