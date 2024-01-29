@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination/Pagination';
 // import css from '../components/Pagination/Pagination.module.css';
 
 import { LoadingSpinner } from 'components/Loader/Loader';
-import { TopBar } from '../components/Topbar/Topbar';
+// import { TopBar } from '../components/Topbar/Topbar';
 import { GoToBack } from 'components/GoToBack/GoToBack';
 import { getFilteredMovies } from 'servises/api';
 import { Gallery } from 'components/Gallery/Gallery';
@@ -61,7 +61,7 @@ const Genres = () => {
         <Link to={backHomeLink.current}>
           <GoToBack></GoToBack>
         </Link>
-        <TopBar title={`Genre ${id}`}></TopBar>
+        {/* <TopBar title={`Genre ${id}`}></TopBar> */}
 
         {isLoading && <LoadingSpinner />}
         <Gallery gallery={genres}></Gallery>

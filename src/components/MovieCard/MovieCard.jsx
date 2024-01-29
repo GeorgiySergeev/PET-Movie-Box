@@ -16,12 +16,13 @@ import {
 export const MovieCard = ({ id, img, title, rating, relise = 'no info' }) => {
   const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
   const location = useLocation();
+  // console.log(location.search);
 
   return (
     <GalleryItem>
       <IconAddToListStyled onClick={() => alert('Added to watchList')} />
 
-      <Link state={{ from: location }} to={`/movies/${id}`} key={id}>
+      <Link state={{ from: location }} to={`/${id}`} key={id}>
         <ImageGalleryItemImage
           src={img ? `${BASIC_IMG_URL}${img}` : defaultImg}
           alt={title}

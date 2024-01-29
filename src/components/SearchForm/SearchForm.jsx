@@ -1,17 +1,19 @@
 import { Form, Input, SearchButton } from './SearchForm.styled';
 import { useState } from 'react';
 import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
+import { Link } from 'react-router-dom';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = () => {
   const [query, setQuery] = useState('');
 
   const onSubmitForm = e => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log('onSubmit');
 
     if (query.trim() === '') {
       return alert('Please enter a valid search term');
     }
-    onSubmit(query);
+
     setQuery('');
   };
 
@@ -31,9 +33,18 @@ export const SearchForm = ({ onSubmit }) => {
         placeholder="Search movie..."
         onChange={handleChangeInput}
       />
-      <SearchButton>
-        <SearchIcon />
-      </SearchButton>
+
+      <Link
+        to={`/search/${query}`}
+        type="submit"
+        onClick={() => {
+          onSubmitForm();
+        }}
+      >
+        <SearchButton>
+          <SearchIcon />
+        </SearchButton>
+      </Link>
     </Form>
   );
 };

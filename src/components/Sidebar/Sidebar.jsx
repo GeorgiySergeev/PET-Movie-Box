@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
-import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
+import { Link, useLocation } from 'react-router-dom';
 
 import { GenreList } from 'components/GenreList/GenreList';
 import {
   SidebarContainer,
   Nav,
   HeadTitle,
-  NavButton,
   AddToListButton,
 } from './Sidebar.styled';
 import Filter from '../Filter/Filter';
@@ -26,20 +23,7 @@ export const Sidebar = () => {
   return (
     <SidebarContainer>
       <HeadTitle>MovieBox</HeadTitle>
-      <Nav>
-        <NavLink to="/">
-          <NavButton>
-            <HomeIcon />
-            <p>Home</p>
-          </NavButton>
-        </NavLink>
-        <NavLink to="#">
-          <NavButton>
-            <SearchIcon />
-            <p>Setting</p>
-          </NavButton>
-        </NavLink>
-      </Nav>
+      <Nav></Nav>
       <Link to={'/watchlist'}>
         <AddToListButton>My watchlist</AddToListButton>
       </Link>

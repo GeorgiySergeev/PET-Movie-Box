@@ -30,7 +30,8 @@ export const HeaderBurgerIcon = styled(RxHamburgerMenu)`
 
 export const Nav = styled.nav`
   display: flex;
-  margin: 0 auto;
+
+  margin-right: auto;
   padding: 10px 0;
   gap: 55px;
   color: #858585;
