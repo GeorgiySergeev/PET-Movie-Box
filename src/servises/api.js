@@ -8,13 +8,13 @@ axios.defaults.params = {
 
 export const getAllTrending = async period => {
   const response = await axios(`${BASE_URL}/trending/all/${period}`);
-  console.log(response.data);
+  // console.log(response.data);
   return response.data.results;
 };
 
 export const getTopRated = async page => {
   const response = await axios(`${BASE_URL}/movie/top_rated?&page=${page}`);
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 };
 

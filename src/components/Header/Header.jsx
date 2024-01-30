@@ -23,7 +23,9 @@ export const Header = () => {
       <SearchForm />
 
       <HeaderBurgerIcon />
-      <LoginButton></LoginButton>
+      <Link to="/login">
+        <LoginButton />
+      </Link>
     </HeaderContainer>
   );
 };

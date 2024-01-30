@@ -53,7 +53,7 @@ const movieSlise = createSlice({
       })
       .addCase(API.fetchTopRared.pending, handlePending)
       .addCase(API.fetchTopRared.fulfilled, (state, action) => {
-        console.log('action.payload', action.payload);
+        // console.log('action.payload', action.payload);
         state.isLoading = false;
         state.error = null;
         state.movies = action.payload.results;

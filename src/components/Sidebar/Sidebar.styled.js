@@ -8,7 +8,7 @@ export const SidebarContainer = styled.div`
   width: 269px;
 
   padding: 68px 15px 15px 15px;
-  height: 1020px;
+  height: 820px;
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;

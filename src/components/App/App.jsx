@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { lazy } from 'react';
 import Layout from 'components/Layout/Layout';
+import Login from '../../pages/Login';
+import NotFound from '../../pages/404page';
 
 const Home = lazy(() => import('pages/Home'));
 const Search = lazy(() => import('pages/Search'));
@@ -11,8 +13,9 @@ const WatchList = lazy(() => import('pages/WatchList'));
 const MovieDetails = lazy(() => import('pages/MovieDetails'));
 const Genres = lazy(() => import('pages/Genres'));
 const TvShows = lazy(() => import('pages/TvShows'));
+// const Login = lazy(() => import('../../pages/Login'));
 
-const NotFound = lazy(() => import('pages/404page'));
+// const NotFound = lazy(() => import('../../pages/404page'));
 
 export const App = () => {
   return (
@@ -25,8 +28,12 @@ export const App = () => {
         <Route path="/:movieId/*" element={<MovieDetails />} />
         <Route path="/genres/:id" element={<Genres />} />
         <Route path="/watchlist" element={<WatchList />} />
+
         <Route path="/tvshows" element={<TvShows />} />
       </Route>
+
+      <Route path="/login" element={<Login />} />
+
       <Route path="*" element={<NotFound />} />
     </Routes>
     // </Container>
