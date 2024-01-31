@@ -1,10 +1,14 @@
 import React from 'react';
 import { TopBar } from '../components/Topbar/Topbar';
+// import { useSelector } from 'react-redux';
+// import { selectIsLogedIn } from '../redux/auth/auth-selectors';
+
 // import { useState, useEffect } from 'react';
 // import { Button } from 'components/Button/Button.styled';
 
 const WatchList = () => {
   // const [list, setList] = useState([]);
+  // const isLoggedIn = useSelector(selectIsLogedIn);
 
   return (
     <div>

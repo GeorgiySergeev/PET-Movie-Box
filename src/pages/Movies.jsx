@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../components/Pagination/Pagination';
 import { selectMovies, selectTotalPage } from '../redux/movies/selectors';
 import { useEffect, useState } from 'react';
-import { fetchTopRared } from '../redux/movies/operations';
+import { fetchTopRatedMovies } from '../redux/movies/operations';
 
 const Movies = () => {
   // const [movies, setMovies] = useState([]);
@@ -14,7 +14,7 @@ const Movies = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTopRared(page));
+    dispatch(fetchTopRatedMovies(page));
   }, [dispatch, page]);
 
   const handlePageChange = page => {

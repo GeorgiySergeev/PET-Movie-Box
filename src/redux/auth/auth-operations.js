@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createRequestToken } from '../../servises/auth-api';
+import { createRequestToken } from '../../servises/tmdb-auth';
 
 export const getToken = createAsyncThunk(
   'auth/token',

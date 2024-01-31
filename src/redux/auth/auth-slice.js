@@ -21,6 +21,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
 
+  reducers: {
+    setIsLoggedIn(state, action) {
+      state.isLoggedIn = action.payload;
+    },
+  },
+
   extraReducers: builder => {
     builder.addCase(API.getToken.fulfilled, (state, action) => {
       console.log(action);
@@ -30,3 +36,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { setIsLoggedIn } = authSlice.actions;

@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { FcGoogle } from 'react-icons/fc';
+import { app, googleAuthProvider } from '../../servises/firebase-auth';
+import { setIsLoggedIn } from '../../redux/auth/auth-slice';
+import { getAuth, signInWithPopup } from 'firebase/auth';
 // import { useNavigate } from 'react-router-dom';
 
 // import { login } from '../../redux/auth/auth-operations';
 
 import css from '../LoginForm/Loginform.module.css';
+
 // import { createRequestToken, validateTokenWithLogin } from 'servises/auth-api';
 // import { getToken } from '../../redux/auth/auth-operations';
 
 const LoginForm = () => {
+  const auth = getAuth(app);
   const dispatch = useDispatch();
+  // const [user, setUser] = useState(auth.currentUser);
+  // console.log(user);
   // const navigate = useNavigate();
   const [pass, setPass] = useState('password');
 
@@ -38,8 +46,8 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async e => {
-    // e.preventDefault();
-    // console.log('Submit login form');
+    e.preventDefault();
+    console.log(e.target);
     // const redirectToAuthenticationPage = () => {
     //   const requestToken = localStorage.getItem('token');
     //   const authenticationUrl = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=https://georgiysergeev.github.io/PET-Movie-Box/`;
@@ -53,6 +61,18 @@ const LoginForm = () => {
     // );
     // await dispatch(login(formData));
     // navigate('/contacts');
+  };
+  const handleLogIn = () => {
+    signInWithPopup(auth, googleAuthProvider)
+      .then(credentials => {
+        // Успешный вход
+        dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
+        // setUser(credentials?.user);
+      })
+      .catch(error => {
+        // Ошибка входа
+        console.log('Login Error:', error.message);
+      });
   };
 
   return (
@@ -117,6 +137,20 @@ const LoginForm = () => {
         </div>
         <button className={`${css.submit}`} type="submit">
           Log in
+        </button>
+        <button
+          name="google-auth"
+          onClick={handleLogIn}
+          className={`${css.submit}`}
+          type="button"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 15,
+          }}
+        >
+          <FcGoogle style={{ width: 25, height: 25 }} /> Log in with Google
         </button>
 
         <p className={`${css.signupLink}`}>

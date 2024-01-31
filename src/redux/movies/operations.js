@@ -5,6 +5,8 @@ import {
   getFilteredMovies,
   getTopRated,
   getAllTrendingTvShow,
+  getTopRatedTv,
+  getTopRatedMovies,
 } from 'servises/api';
 
 export const fetchTopMovies = createAsyncThunk(
@@ -20,11 +22,11 @@ export const fetchTopMovies = createAsyncThunk(
   }
 );
 
-export const fetchTopRared = createAsyncThunk(
+export const fetchTopRatedMovies = createAsyncThunk(
   'movies/fetchTvShow',
   async (page, thunkAPI) => {
     try {
-      const response = await getTopRated(page);
+      const response = await getTopRatedMovies(page);
 
       return response;
     } catch (error) {
@@ -33,11 +35,11 @@ export const fetchTopRared = createAsyncThunk(
   }
 );
 
-export const fetchTvShow = createAsyncThunk(
+export const fetchTopRatedTv = createAsyncThunk(
   'movies/fetchTopRated',
   async (page, thunkAPI) => {
     try {
-      const response = await getAllTrendingTvShow(page);
+      const response = await getTopRatedTv(page);
 
       return response;
     } catch (error) {

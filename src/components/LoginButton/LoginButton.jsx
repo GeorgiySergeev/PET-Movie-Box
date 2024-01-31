@@ -1,10 +1,11 @@
 import { CiLogin } from 'react-icons/ci';
 import css from './LoginButton.module.css';
 
-function LoginButton() {
+function LoginButton({ text, onClick, user }) {
   return (
-    <button className={css.loginContainer}>
-      <p>Login</p>
+    <button onClick={onClick} className={css.loginContainer}>
+      <p>{text}</p>
+      <h4>{user}</h4>
       <CiLogin style={{ display: 'block' }} />
     </button>
   );

@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 const API_KEY = '4c0e7f751de589a214c7a7cb256ddfec';
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 axios.defaults.params = {
@@ -12,8 +14,14 @@ export const getAllTrending = async period => {
   return response.data.results;
 };
 
-export const getTopRated = async page => {
+export const getTopRatedMovies = async page => {
   const response = await axios(`${BASE_URL}/movie/top_rated?&page=${page}`);
+  // console.log(response.data);
+  return response.data;
+};
+
+export const getTopRatedTv = async page => {
+  const response = await axios(`${BASE_URL}/tv/top_rated?&page=${page}`);
   // console.log(response.data);
   return response.data;
 };
