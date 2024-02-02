@@ -7,7 +7,7 @@ export const PrivatRoute = ({ children, redirectTo = '/login' }) => {
   return <>{isLoggedIn ? children : <Navigate to={redirectTo} replace />}</>;
 };
 
-export const PrivatRouteAuth = ({ children, redirectTo = '/watchlist' }) => {
+export const PrivatRouteAuth = ({ children, redirectTo = '/' }) => {
   const isLoggedIn = useSelector(selectIsLogedIn);
   return <>{!isLoggedIn ? children : <Navigate to={redirectTo} replace />}</>;
 };

@@ -7,43 +7,50 @@
 // } from 'firebase/auth';
 // import { app, googleAuthProvider } from '../../servises/firebase-auth';
 // import { useSelector, useDispatch } from 'react-redux';
-// import { setIsLoggedIn } from '../../redux/auth/auth-slice';
+// import { setIsLoggedIn, setUser } from '../../redux/auth/auth-slice';
 
-// export const AuthProvider = () => {
+// export const AuthProvider = ({ children }) => {
 //   const auth = getAuth(app);
-//   const [user, setUser] = useState(auth.currentUser);
+//   const [userCurrent, setUserCurrent] = useState(auth.currentUser);
 //   const dispatch = useDispatch();
 
 //   useEffect(() => {
 //     const unsubscribe = onAuthStateChanged(auth, isUser => {
 //       //   console.log(isUser.emailVerified);
 //       if (isUser !== null) {
-//         dispatch(setIsLoggedIn(true));
-//         setUser(isUser);
+//         console.log(isUser);
+//         const userObj = {
+//           email: isUser.email,
+//           token: isUser.accessToken,
+//           isLoggedIn: true,
+//           id: isUser.uid,
+//         };
+//         dispatch(setUser(userObj));
+//         // setUser(isUser);
 //       } else {
-//         // dispatch(setIsLoggedIn(isUser.emailVerified));
+//         dispatch(setIsLoggedIn(false));
 
-//         signInWithPopup(auth, googleAuthProvider)
-//           .then(credentials => setUser(credentials?.user))
-//           .catch(error => console.log('Error:', error.message));
+//         // signInWithPopup(auth, googleAuthProvider)
+//         //   .then(credentials => setUser(credentials?.user))
+//         //   .catch(error => console.log('Error:', error.message));
 //       }
 //     });
 
 //     return unsubscribe;
 //   }, [auth, dispatch]);
 
-//   const handleLogout = () => {
-//     signOut(auth)
-//       .then(() => {
-//         // Успешный выход
-//         dispatch(setIsLoggedIn(false));
-//         setUser(null);
-//       })
-//       .catch(error => {
-//         // Ошибка выхода
-//         console.log('Logout Error:', error.message);
-//       });
-//   };
+//   //   const handleLogout = () => {
+//   //     signOut(auth)
+//   //       .then(() => {
+//   //         // Успешный выход
+//   //         dispatch(setIsLoggedIn(false));
+//   //         setUser(null);
+//   //       })
+//   //       .catch(error => {
+//   //         // Ошибка выхода
+//   //         console.log('Logout Error:', error.message);
+//   //       });
+//   //   };
 
-//   return user !== null ? <>{user.displayName}</> : <>isLoading</>;
+//   return userCurrent !== null ? <>{userCurrent.displayName}</> : <>isLoading</>;
 // };

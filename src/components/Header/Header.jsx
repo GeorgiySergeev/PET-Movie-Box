@@ -6,26 +6,26 @@ import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
 import LoginButton from 'components/LoginButton/LoginButton';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
+import { selectEmail, selectIsLogedIn } from '../../redux/auth/auth-selectors';
 import { getAuth, signOut } from 'firebase/auth';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { app } from '../../servises/firebase-auth';
-import { setIsLoggedIn } from '../../redux/auth/auth-slice';
+import { removeUser } from '../../redux/auth/auth-slice';
 
 export const Header = () => {
   const auth = getAuth(app);
-  const [user, setUser] = useState(auth.currentUser);
+  const userEmail = useSelector(selectEmail);
   const isLoggedIn = useSelector(selectIsLogedIn);
   const dispatch = useDispatch();
   // console.log(isLoggedIn, user);
 
   const handleLogout = () => {
-    console.log('logout');
+    // console.log('logout');
     signOut(auth)
       .then(() => {
+        // console.log('log out');
         // Успешный выход
-        dispatch(setIsLoggedIn(false));
-        setUser(null);
+        dispatch(removeUser());
       })
       .catch(error => {
         // Ошибка выхода
@@ -63,11 +63,7 @@ export const Header = () => {
       <SearchForm />
 
       {isLoggedIn ? (
-        <LoginButton
-          onClick={handleLogout}
-          text={'Log Out'}
-          user={user.displayName}
-        />
+        <LoginButton onClick={handleLogout} text={'Log Out'} user={userEmail} />
       ) : (
         <Link to="/login">
           <LoginButton text={'Log In'} />

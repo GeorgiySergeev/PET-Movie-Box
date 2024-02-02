@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { moviesReducer } from './movies/moviesSlice';
 import { authReducer } from './auth/auth-slice';
+// import userReduser from './FIREBASE-AUTH/userSlise'; //!  auth with firebase
 
 // import { tvShowReduser } from './TV-shows/TvShow-slice';
 import {
@@ -19,14 +20,14 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'email'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     movies: moviesReducer,
-    // tvshow: tvShowReduser,
+    // user: userReduser,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FcGoogle } from 'react-icons/fc';
 import { app, googleAuthProvider } from '../../servises/firebase-auth';
-import { setIsLoggedIn } from '../../redux/auth/auth-slice';
-import { getAuth, signInWithPopup } from 'firebase/auth';
+import { setUser } from '../../redux/auth/auth-slice';
+import {
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+
 // import { useNavigate } from 'react-router-dom';
 
 // import { login } from '../../redux/auth/auth-operations';
@@ -19,7 +24,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState(auth.currentUser);
   // console.log(user);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [pass, setPass] = useState('password');
 
   const [formData, setFormData] = useState({
@@ -27,11 +32,11 @@ const LoginForm = () => {
     password: '',
   });
 
-  useEffect(() => {
-    // dispatch(getToken());
+  // useEffect(() => {
+  //   // dispatch(getToken());
 
-    console.log('Mount Form');
-  }, [dispatch]);
+  //   console.log('Mount Form');
+  // }, [dispatch]);
 
   const showPassword = () => {
     setPass(prev => (prev === 'password' ? 'text' : 'password'));
@@ -47,7 +52,28 @@ const LoginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(e.target);
+
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then(userCredential => {
+        // Signed in
+        const user = userCredential.user;
+        const userObj = {
+          email: user.email,
+          token: user.accessToken,
+          isLoggedIn: true,
+          id: user.uid,
+        };
+        // console.log(user);
+        // dispatch(setIsLoggedIn(true));
+        dispatch(setUser(userObj));
+        navigate('/');
+        // ...
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
     // const redirectToAuthenticationPage = () => {
     //   const requestToken = localStorage.getItem('token');
     //   const authenticationUrl = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=https://georgiysergeev.github.io/PET-Movie-Box/`;
@@ -62,12 +88,20 @@ const LoginForm = () => {
     // await dispatch(login(formData));
     // navigate('/contacts');
   };
-  const handleLogIn = () => {
+
+  const handleLogInWithPopUp = () => {
     signInWithPopup(auth, googleAuthProvider)
       .then(credentials => {
+        const user = credentials.user;
+        const userObj = {
+          email: user.email,
+          token: user.accessToken,
+          isLoggedIn: true,
+          id: user.uid,
+        };
         // Успешный вход
-        dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
-        // setUser(credentials?.user);
+        // dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
+        dispatch(setUser(userObj));
       })
       .catch(error => {
         // Ошибка входа
@@ -140,7 +174,7 @@ const LoginForm = () => {
         </button>
         <button
           name="google-auth"
-          onClick={handleLogIn}
+          onClick={handleLogInWithPopUp}
           className={`${css.submit}`}
           type="button"
           style={{

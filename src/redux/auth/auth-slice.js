@@ -2,10 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import * as API from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  // user: { name: null, email: null },
+  name: '',
+  email: '',
   token: null,
-  isLoggedIn: false,
   error: null,
+  isLoggedIn: false,
+  id: null,
 };
 
 // const handlePending = state => {
@@ -23,12 +26,28 @@ const authSlice = createSlice({
 
   reducers: {
     setIsLoggedIn(state, action) {
+      // console.log(action.payload);
       state.isLoggedIn = action.payload;
+    },
+
+    setUser(state, action) {
+      // console.log(action.payload);
+      const { email, token, id, isLoggedIn } = action.payload;
+      state.email = email;
+      state.token = token;
+      state.isLoggedIn = isLoggedIn;
+      state.id = id;
+    },
+    removeUser(state) {
+      state.email = null;
+      state.token = null;
+      state.id = null;
+      state.isLoggedIn = false;
     },
   },
 
   extraReducers: builder => {
-    builder.addCase(API.getToken.fulfilled, (state, action) => {
+    builder.addCase(API.getTokenTmdb.fulfilled, (state, action) => {
       console.log(action);
       state.token = action.payload;
     });
@@ -36,4 +55,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { setIsLoggedIn } = authSlice.actions;
+export const { setIsLoggedIn, setUser, removeUser } = authSlice.actions;

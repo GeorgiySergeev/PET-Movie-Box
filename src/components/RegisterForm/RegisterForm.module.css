@@ -34,7 +34,7 @@
 .form button {
   outline: none;
   border: 1px solid #e5e7eb;
-  margin: 28px 0;
+  margin: 8px 0;
 }
 
 .inputContainer input {
@@ -43,17 +43,16 @@
   padding-right: 3rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  width: 378px;
+  width: 300px;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  margin-bottom: 25px;
 }
 
 .inputContainer span {
   display: grid;
   position: absolute;
   top: 0;
-  bottom: 0px;
+  bottom: 0;
   right: 0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -72,18 +71,14 @@
   padding-bottom: 0.75rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  background-color: #31d0aa;
-  color: var(--dark);
-  font-size: 16px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
   width: 100%;
   border-radius: 0.5rem;
   text-transform: uppercase;
-}
-
-.submit:hover {
-  color: var(--primary-accent);
 }
 
 .signupLink {
