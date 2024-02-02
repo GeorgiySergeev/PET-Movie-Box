@@ -3,8 +3,8 @@ import {
   getAllTrending,
   searchMovie,
   getFilteredMovies,
-  getTopRated,
-  getAllTrendingTvShow,
+  // getTopRated,
+  // getAllTrendingTvShow,
   getTopRatedTv,
   getTopRatedMovies,
 } from 'servises/api';
