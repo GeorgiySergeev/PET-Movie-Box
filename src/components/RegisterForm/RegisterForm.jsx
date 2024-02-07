@@ -1,18 +1,19 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 // !
-// import { setUser } from '../../redux/FIREBASE-AUTH/userSlise';
+import { setUser } from '../../redux/auth/auth-slice';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // !
 
 // import { register } from '../../redux/auth/auth-operations';
 
 import css from '../RegisterForm/RegisterForm.module.css';
-import { app } from 'servises/firebase-auth';
+import { app, writeUserData } from 'servises/firebase-auth';
 
 const RegisterForm = () => {
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const auth = getAuth(app);
   // console.log(auth);
 
@@ -39,6 +40,14 @@ const RegisterForm = () => {
         // Signed up
         const user = userCredential.user;
         console.log('user', user);
+        const userObj = {
+          email: user.email,
+          token: user.accessToken,
+          isLoggedIn: true,
+          id: user.uid,
+        };
+        dispatch(setUser(userObj));
+        writeUserData(user.uid, []);
         // ...
       })
       .catch(error => {
@@ -48,11 +57,14 @@ const RegisterForm = () => {
         // ..
       });
 
+    // writeUserData()
+
     setFormData({
       name: '',
       email: '',
       password: '',
     });
+    navigate('/');
   };
 
   return (

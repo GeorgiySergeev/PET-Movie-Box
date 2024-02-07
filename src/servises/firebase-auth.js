@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 // import { getAnalytics } from 'firebase/analytics';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { setWatchList } from '../redux/watchlist/watchlist-slice';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,11 +26,13 @@ export const googleAuthProvider = new GoogleAuthProvider();
 
 // const analytics = getAnalytics(app);
 
-export function writeUserData(userId, email, watchlist) {
+export function writeUserData(userId, watchlist) {
+  console.log(userId);
+  if (userId === null) return;
   const db = getDatabase();
   const reference = ref(db, 'users/' + userId);
   set(reference, {
-    email,
+    user: userId,
     watchlist,
   });
 }
@@ -51,7 +54,9 @@ export const getUserData = userId => {
     const userData = snapshot.val();
 
     if (userData) {
-      console.log('User data:', userData);
+      console.log('User data:', userData.watchlist);
+      setWatchList(userData.watchlist);
+      return;
 
       // Далее вы можете использовать userData по вашему усмотрению
     } else {

@@ -16,7 +16,9 @@ import { useDispatch } from 'react-redux';
 
 import { setIsLoggedIn } from '../../redux/auth/auth-slice';
 
-import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
+// import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
+
+import { selectCurrentUserId } from '../../redux/auth/auth-selectors';
 const Home = lazy(() => import('pages/Home'));
 const Search = lazy(() => import('pages/Search'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -31,12 +33,19 @@ const NotFound = lazy(() => import('pages/404page'));
 export const App = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
+  const currentUserId = `${useSelector(selectCurrentUserId)}`;
+  // const watchlist = useSelector(selectWatchlist);
+  console.log(currentUserId);
 
-  const watchlist = useSelector(selectWatchlist);
+  // useEffect(() => {
+  //   console.log(watchlist);
+  //   if (!currentUserId) return;
+  //   writeUserData(currentUserId, watchlist);
+  // }, [currentUserId, watchlist]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      console.log(currentUser);
+      // console.log(currentUser);
 
       if (currentUser === null) {
         dispatch(setIsLoggedIn(false));
@@ -50,7 +59,7 @@ export const App = () => {
     return () => {
       unsubscribe();
     };
-  }, [auth, dispatch, watchlist]);
+  }, [auth, dispatch]);
 
   return (
     <>

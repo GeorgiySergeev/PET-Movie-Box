@@ -11,14 +11,17 @@ import {
 } from 'firebase/auth';
 
 import css from '../LoginForm/Loginform.module.css';
+// import { selectCurrentUserId } from '../../redux/auth/auth-selectors';
+
+import { getDatabase, onValue, ref } from 'firebase/database';
+import { setWatchList } from '../../redux/watchlist/watchlist-slice';
 
 const LoginForm = () => {
   const auth = getAuth(app);
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const [pass, setPass] = useState('password');
+  // const id = useSelector(selectCurrentUserId);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -27,6 +30,26 @@ const LoginForm = () => {
 
   const showPassword = () => {
     setPass(prev => (prev === 'password' ? 'text' : 'password'));
+  };
+
+  const getUserData = userId => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${userId}`);
+
+    // Устанавливаем слушатель изменений данных
+    onValue(userRef, snapshot => {
+      const userData = snapshot.val();
+
+      if (userData) {
+        console.log('User data:', userData.watchlist);
+        dispatch(setWatchList(userData.watchlist));
+        return;
+
+        // Далее вы можете использовать userData по вашему усмотрению
+      } else {
+        console.log('User not found');
+      }
+    });
   };
 
   const handleChange = e => {
@@ -55,6 +78,7 @@ const LoginForm = () => {
         // dispatch(setIsLoggedIn(true));
         console.log('User is logged in');
         // writeUserData(userId, user.email, [{ i: 5 }]);
+        getUserData(userId);
 
         dispatch(setUser(userObj));
         // downloadMoviesFromStorage(userId);
@@ -72,6 +96,8 @@ const LoginForm = () => {
   const handleLogInWithPopUp = () => {
     signInWithPopup(auth, googleAuthProvider)
       .then(credentials => {
+        // const userId = auth.currentUser.uid;
+
         const user = credentials.user;
         const userObj = {
           email: user.email,
@@ -82,7 +108,9 @@ const LoginForm = () => {
         // Успешный вход
         // dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
         console.log('User is logged in');
+
         dispatch(setUser(userObj));
+        // getUserData(userId);
 
         // downloadMoviesFromStorage(userId);
       })

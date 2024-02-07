@@ -11,7 +11,7 @@ const watchlistSlise = createSlice({
 
   reducers: {
     setWatchList(state, action) {
-      console.log(action);
+      console.log(action.payload);
       state.watchlist = action.payload;
     },
     addMovie(state, action) {
