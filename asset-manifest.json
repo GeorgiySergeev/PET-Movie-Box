@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PET-Movie-Box/static/css/main.a70e1965.css",
-    "main.js": "/PET-Movie-Box/static/js/main.f07c3b6c.js",
+    "main.js": "/PET-Movie-Box/static/js/main.af1d915c.js",
     "static/js/570.20b0ad36.chunk.js": "/PET-Movie-Box/static/js/570.20b0ad36.chunk.js",
     "static/js/565.22386653.chunk.js": "/PET-Movie-Box/static/js/565.22386653.chunk.js",
     "static/js/134.3fad9ed4.chunk.js": "/PET-Movie-Box/static/js/134.3fad9ed4.chunk.js",
@@ -33,7 +33,7 @@
     "static/media/Home.svg": "/PET-Movie-Box/static/media/Home.759015d8ae4c9050e67abc3e2b2371f3.svg",
     "static/media/search.svg": "/PET-Movie-Box/static/media/search.16731aada1e0fcd99e307600b82aef44.svg",
     "main.a70e1965.css.map": "/PET-Movie-Box/static/css/main.a70e1965.css.map",
-    "main.f07c3b6c.js.map": "/PET-Movie-Box/static/js/main.f07c3b6c.js.map",
+    "main.af1d915c.js.map": "/PET-Movie-Box/static/js/main.af1d915c.js.map",
     "570.20b0ad36.chunk.js.map": "/PET-Movie-Box/static/js/570.20b0ad36.chunk.js.map",
     "565.22386653.chunk.js.map": "/PET-Movie-Box/static/js/565.22386653.chunk.js.map",
     "134.3fad9ed4.chunk.js.map": "/PET-Movie-Box/static/js/134.3fad9ed4.chunk.js.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.a70e1965.css",
-    "static/js/main.f07c3b6c.js"
+    "static/js/main.af1d915c.js"
   ]
 }
