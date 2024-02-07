@@ -4,8 +4,16 @@ import { MovieCard } from 'components/MovieCard/MovieCard';
 import { GalleryList } from './Gallery.styled';
 import { MobileMovieCard } from 'components/Mobile/MobileGallery/MobileMovieCard';
 
+import { useSelector } from 'react-redux';
+import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
+
 export const Gallery = ({ gallery }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const watchlist = useSelector(selectWatchlist);
+
+  const isInWatchList = id => {
+    return watchlist.find(el => el.id === id);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,6 +53,7 @@ export const Gallery = ({ gallery }) => {
                 relise={release_date}
                 first_air_date={first_air_date}
                 vote_average={vote_average}
+                isAdded={isInWatchList(id)}
               />
             );
           }

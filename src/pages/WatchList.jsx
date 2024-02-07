@@ -1,25 +1,15 @@
-import React from 'react';
-// import { TopBar } from '../components/Topbar/Topbar';
-// import { useSelector } from 'react-redux';
-// import { selectIsLogedIn } from '../redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import { selectWatchlist } from '../redux/watchlist/watchlist-selectors';
 
-// import { useState, useEffect } from 'react';
-// import { Button } from 'components/Button/Button.styled';
+import WatchListList from 'components/WatchListList/WatchListList';
 
 const WatchList = () => {
-  // const [list, setList] = useState([]);
-  // const isLoggedIn = useSelector(selectIsLogedIn);
+  const watchlist = useSelector(selectWatchlist);
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <h1>Watchlist</h1>
-      {/* <TopBar
-        title="Welcome to"
-        span="Watchlists"
-        text={
-          'Create your watch list, add favorite movies, share with friends. Movie Box brings joy!"'
-        }
-      ></TopBar> */}
+      <WatchListList watchlist={watchlist} />
     </div>
   );
 };

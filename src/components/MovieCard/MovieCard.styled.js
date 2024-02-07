@@ -7,6 +7,8 @@ export const IconAddToListStyled = styled(IconAddToList)`
   right: 0;
   width: 18px;
   height: 23px;
+  cursor: pointer;
+  fill: ${props => (props.checked ? 'green' : '')};
 
   @media screen and (min-width: 768px) {
     left: 0px;

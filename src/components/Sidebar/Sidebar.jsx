@@ -28,7 +28,7 @@ export const Sidebar = () => {
         <AddToListButton>My watchlist</AddToListButton>
       </Link>
       {!shouldShowComponent && <GenreList></GenreList>}
-      {shouldShowComponent && <div>Reel</div>}
+      {shouldShowComponent && <div></div>}
       {/* <Filter /> */}
     </SidebarContainer>
   );

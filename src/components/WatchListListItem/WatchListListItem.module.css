@@ -1,0 +1,104 @@
+.item {
+  position: relative;
+  background-color: rgb(31, 32, 32);
+  color: wheat;
+  font-size: 22px;
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+  padding: 5px;
+  gap: 35px;
+  border-radius: 8px;
+}
+
+.item_img {
+  height: 160px;
+  /* margin-right: auto; */
+}
+
+.item_info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* .item_checkbox {
+  position: absolute;
+  right: 5px;
+} */
+.item_checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--sucsess);
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: absolute;
+  right: 6px;
+  top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.item_checkbox:before {
+  content: '';
+  background-color: #30cfd0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.item_checkbox:checked:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.item_checkbox-label {
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.item_delete_icon {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.item_addNote_button {
+  position: absolute;
+  display: flex;
+  gap: 15px;
+  width: 100px;
+  height: 30px;
+  top: 10px;
+  right: 50px;
+  border: 1px solid #30cfd0;
+  border-radius: 8px;
+  align-items: center;
+  padding: 3px;
+}
+
+/* .item_addNote_icon {
+} */
+.item_addNote_text {
+  font-size: 12px;
+}
+
+.item_isWarched_icon {
+  position: absolute;
+  top: 15px;
+  right: 180px;
+  cursor: pointer;
+}

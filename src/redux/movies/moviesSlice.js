@@ -5,7 +5,6 @@ import * as API from './operations';
 const appState = {
   movies: [],
   totalPage: null,
-
   isLoading: true,
   error: null,
 };
@@ -24,11 +23,14 @@ const movieSlise = createSlice({
 
   initialState: appState,
 
-  //   reducers: {
-  //     addMovies(state, action) {
-  //       state.movies.push(action.payload);
-  //     },
-  //   },
+  reducers: {
+    clearMovies(state) {
+      state.movies = [];
+      state.totalPage = null;
+      state.isLoading = false;
+      state.error = null;
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -72,5 +74,5 @@ const movieSlise = createSlice({
   },
 });
 
-// export const { addMovies } = movieSlise.actions;
+export const { clearMovies } = movieSlise.actions;
 export const moviesReducer = movieSlise.reducer;

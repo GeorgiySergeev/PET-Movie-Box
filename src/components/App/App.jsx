@@ -1,22 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
+
 import { Suspense, lazy, useEffect } from 'react';
 import Layout from 'components/Layout/Layout';
 import { LoadingSpinner } from 'components/Loader/Loader';
 import ErrorBoundary from '../ErrorDoundory/ErrorBoundary';
 
-// import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
+import { useSelector } from 'react-redux';
 import {
   PrivatRoute,
   PrivatRouteAuth,
 } from 'components/Navigation/PrivatRoute';
 import { useDispatch } from 'react-redux';
-// import { fetchCurrentUser } from '../../redux/auth/auth-operations';
-// import AuthProvider from '../../redux/auth/auth-provider';
-import { setUser } from '../../redux/auth/auth-slice';
-// import { AuthProvider } from '../AuthProvider/AuthProvider';
 
+import { setIsLoggedIn } from '../../redux/auth/auth-slice';
+
+import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
 const Home = lazy(() => import('pages/Home'));
 const Search = lazy(() => import('pages/Search'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -29,39 +29,28 @@ const Register = lazy(() => import('pages/Register'));
 const NotFound = lazy(() => import('pages/404page'));
 
 export const App = () => {
-  // const [use, setUse] = useState({});
   const dispatch = useDispatch();
   const auth = getAuth();
-  // const [current, setCurrent] = useAuthState(auth);
-  // console.log(auth.currentUser);
-  // console.log(current);
+
+  const watchlist = useSelector(selectWatchlist);
 
   useEffect(() => {
-    const unsubscrube = onAuthStateChanged(auth, currentUser => {
-      // console.log(currentUser);
-      if (currentUser === null) return;
-      const userObj = {
-        email: currentUser.email,
-        token: currentUser.accessToken,
-        isLoggedIn: true,
-        id: currentUser.uid,
-      };
-      dispatch(setUser(userObj));
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      console.log(currentUser);
+
+      if (currentUser === null) {
+        dispatch(setIsLoggedIn(false));
+      }
+
+      // Обновление состояния вашего компонента, например, установка локального состояния
+      // setUse({ email: currentUser.email, token: currentUser.accessToken, ... });
     });
+    dispatch(setIsLoggedIn(true));
+
     return () => {
-      unsubscrube();
+      unsubscribe();
     };
-    // console.log(current);
-    // if (!current) return;
-    // const userObj = {
-    //   email: current.email,
-    //   token: current.accessToken,
-    //   isLoggedIn: true,
-    //   id: current.uid,
-    // };
-    // dispatch(setUser(userObj));
-    // dispatch(fetchCurrentUser());
-  }, [dispatch, auth]);
+  }, [auth, dispatch, watchlist]);
 
   return (
     <>

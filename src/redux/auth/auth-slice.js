@@ -7,7 +7,7 @@ const initialState = {
   email: '',
   token: null,
   error: null,
-  isLoggedIn: false,
+  isLoggedIn: null,
   id: null,
 };
 

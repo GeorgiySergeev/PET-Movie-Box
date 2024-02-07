@@ -26,6 +26,6 @@ export const GenreListStyled = styled.ul`
 export const Button = styled.button`
   border: 1px solid rgba(255, 190, 190, 0.2);
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 16px;
   padding: 5px;
 `;

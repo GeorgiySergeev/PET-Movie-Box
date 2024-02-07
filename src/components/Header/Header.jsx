@@ -12,12 +12,13 @@ import { getAuth, signOut } from 'firebase/auth';
 import { app } from '../../servises/firebase-auth';
 import { removeUser } from '../../redux/auth/auth-slice';
 
+import { claerWatchlist } from '../../redux/watchlist/watchlist-slice';
+
 export const Header = () => {
   const auth = getAuth(app);
   const userEmail = useSelector(selectEmail);
   const isLoggedIn = useSelector(selectIsLogedIn);
   const dispatch = useDispatch();
-  // console.log(isLoggedIn, user);
 
   const handleLogout = () => {
     // console.log('logout');
@@ -26,6 +27,7 @@ export const Header = () => {
         // console.log('log out');
         // Успешный выход
         dispatch(removeUser());
+        dispatch(claerWatchlist());
       })
       .catch(error => {
         // Ошибка выхода

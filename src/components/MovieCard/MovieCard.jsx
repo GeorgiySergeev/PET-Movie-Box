@@ -6,6 +6,9 @@ import { ReactComponent as IconHigh } from '../../assets/icons/great _ 80.svg';
 import defaultImg from '../../assets/default-img/no-available-image.png';
 import { formatDate } from '../../servises/date';
 
+import { useDispatch } from 'react-redux';
+import { addMovie, removeMovie } from '../../redux/watchlist/watchlist-slice';
+
 import {
   GalleryItem,
   ImageGalleryItemImage,
@@ -13,6 +16,7 @@ import {
   InfoBox,
   IconAddToListStyled,
 } from './MovieCard.styled';
+import { useState } from 'react';
 
 export const MovieCard = ({
   id,
@@ -22,15 +26,37 @@ export const MovieCard = ({
   relise,
   first_air_date,
   vote_average,
+  isAdded,
 }) => {
   const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
   const location = useLocation();
   const formatedData = formatDate(relise);
   const formatedDataAlt = formatDate(first_air_date);
+  const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = useState(isAdded);
+
+  const handlerAddMovieToggle = () => {
+    setIsChecked(prev => (prev = !prev));
+
+    isChecked
+      ? dispatch(removeMovie(id))
+      : dispatch(
+          addMovie({
+            id,
+            img,
+            title,
+            rating,
+            relise,
+            // first_air_date,
+            vote_average,
+            // added: isChecked,
+          })
+        );
+  };
 
   return (
     <GalleryItem>
-      <IconAddToListStyled onClick={() => alert('Added to watchList')} />
+      <IconAddToListStyled onClick={handlerAddMovieToggle} checked={isAdded} />
 
       <Link state={{ from: location }} to={`/${id}`} key={id}>
         <ImageGalleryItemImage

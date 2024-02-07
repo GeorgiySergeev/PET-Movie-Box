@@ -16,18 +16,19 @@ import {
 } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
+import { watchlistReduser } from './watchlist/watchlist-slice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'email'],
+  whitelist: ['token', 'email', 'id'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     movies: moviesReducer,
-    // user: userReduser,
+    watchlist: watchlistReduser,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

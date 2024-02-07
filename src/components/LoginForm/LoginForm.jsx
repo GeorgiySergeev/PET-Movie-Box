@@ -10,20 +10,13 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-// import { useNavigate } from 'react-router-dom';
-
-// import { login } from '../../redux/auth/auth-operations';
-
 import css from '../LoginForm/Loginform.module.css';
-
-// import { createRequestToken, validateTokenWithLogin } from 'servises/auth-api';
-// import { getToken } from '../../redux/auth/auth-operations';
 
 const LoginForm = () => {
   const auth = getAuth(app);
+
   const dispatch = useDispatch();
-  // const [user, setUser] = useState(auth.currentUser);
-  // console.log(user);
+
   const navigate = useNavigate();
   const [pass, setPass] = useState('password');
 
@@ -31,12 +24,6 @@ const LoginForm = () => {
     email: '',
     password: '',
   });
-
-  // useEffect(() => {
-  //   // dispatch(getToken());
-
-  //   console.log('Mount Form');
-  // }, [dispatch]);
 
   const showPassword = () => {
     setPass(prev => (prev === 'password' ? 'text' : 'password'));
@@ -55,6 +42,7 @@ const LoginForm = () => {
 
     signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then(userCredential => {
+        const userId = auth.currentUser.uid;
         // Signed in
         const user = userCredential.user;
         const userObj = {
@@ -63,10 +51,15 @@ const LoginForm = () => {
           isLoggedIn: true,
           id: user.uid,
         };
-        // console.log(user);
+        console.log(userId);
         // dispatch(setIsLoggedIn(true));
+        console.log('User is logged in');
+        // writeUserData(userId, user.email, [{ i: 5 }]);
+
         dispatch(setUser(userObj));
+        // downloadMoviesFromStorage(userId);
         navigate('/');
+
         // ...
       })
       .catch(error => {
@@ -74,19 +67,6 @@ const LoginForm = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    // const redirectToAuthenticationPage = () => {
-    //   const requestToken = localStorage.getItem('token');
-    //   const authenticationUrl = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=https://georgiysergeev.github.io/PET-Movie-Box/`;
-    //   window.location.href = authenticationUrl;
-    // };
-    // redirectToAuthenticationPage();
-    // validateTokenWithLogin(
-    //   's.georgiymail@gmail.com',
-    //   '12dollarov',
-    //   requestToken
-    // );
-    // await dispatch(login(formData));
-    // navigate('/contacts');
   };
 
   const handleLogInWithPopUp = () => {
@@ -101,7 +81,10 @@ const LoginForm = () => {
         };
         // Успешный вход
         // dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
+        console.log('User is logged in');
         dispatch(setUser(userObj));
+
+        // downloadMoviesFromStorage(userId);
       })
       .catch(error => {
         // Ошибка входа
