@@ -24,11 +24,17 @@ const authPersistConfig = {
   whitelist: ['token', 'email', 'id'],
 };
 
+const watchlistPersistConfig = {
+  key: 'watchlist',
+  storage,
+  whitelist: ['watchlist'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     movies: moviesReducer,
-    watchlist: watchlistReduser,
+    watchlist: persistReducer(watchlistPersistConfig, watchlistReduser),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
