@@ -6,13 +6,20 @@ import { Header } from 'components/Header/Header';
 import { Container } from 'components/App/App.styled';
 
 // import { Footer } from 'components/Footer/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Main } from './Layout.styled';
 
 import { Suspense } from 'react';
 
 const Layout = () => {
   const [shouldRenderSidebar, setShouldRenderSidebar] = useState(false);
+  const location = useLocation();
+
+  // if (location.pathname.includes('/watchlist')) {
+  //   setShouldRenderSidebar(false);
+  // } else {
+  //   setShouldRenderSidebar(true);
+  // }
 
   useEffect(() => {
     const handleResize = () => {

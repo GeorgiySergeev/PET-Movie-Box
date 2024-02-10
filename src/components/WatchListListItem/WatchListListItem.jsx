@@ -36,15 +36,10 @@ const WatchListListItem = movie => {
     );
   };
 
-  // useEffect(() => {
-  //   dispatch(updateMovieInWatchList({ id: movie.id }));
-  // }, [dispatch, movie.id, isWatched]);
-
   const handlerClickIsWatched = () => {
     dispatch(updateMovieInWatchList({ id: movie.id }));
-    // setIsWatched(prev => (prev = !prev));
   };
-  console.log(movie);
+
   return (
     <li className={css.item}>
       <Link state={{ from: location }} to={`/${movie.id}`} key={movie.id}>

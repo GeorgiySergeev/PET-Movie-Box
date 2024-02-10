@@ -16,8 +16,8 @@ export const HeadWrapper = styled.div`
 export const InfoWrapper = styled.div`
   /* width: 100%; */
   width: 645px;
-  padding: 15px;
-  padding-right: 35px;
+  /* padding: 15px;
+  padding-right: 35px; */
 `;
 
 export const Image = styled.img`

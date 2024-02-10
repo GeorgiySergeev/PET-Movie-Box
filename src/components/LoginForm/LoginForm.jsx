@@ -41,7 +41,7 @@ const LoginForm = () => {
       const userData = snapshot.val();
 
       if (userData) {
-        console.log('User data:', userData.watchlist);
+        // console.log('User data:', userData.watchlist);
         dispatch(setWatchList(userData.watchlist));
         return;
 

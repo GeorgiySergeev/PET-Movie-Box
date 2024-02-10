@@ -6,6 +6,6 @@ export const Main = styled.main`
   /* display: flex; */
 
   @media screen and (min-width: 1280px) {
-    padding: 30px;
+    /* padding: 30px; */
   }
 `;

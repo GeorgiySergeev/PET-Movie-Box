@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const TopBarWrapper = styled.div`
   position: relative;
-  max-width: 1058px;
+  max-width: 1136px;
   height: 350px;
   margin-bottom: 25px;
   border-radius: 8px;

@@ -1,4 +1,5 @@
 .loginContainer {
+  display: none;
   /* background-color: antiquewhite; */
   color: black;
   display: flex;

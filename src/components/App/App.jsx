@@ -73,16 +73,16 @@ export const App = () => {
               <Route path="/:movieId/*" element={<MovieDetails />} />
               <Route path="/genres/:id" element={<Genres />} />
 
-              <Route
-                path="/watchlist"
-                element={
-                  <PrivatRoute>
-                    <WatchList />
-                  </PrivatRoute>
-                }
-              />
               <Route path="/tvshows" element={<TvShows />} />
             </Route>
+            <Route
+              path="/watchlist"
+              element={
+                <PrivatRoute>
+                  <WatchList />
+                </PrivatRoute>
+              }
+            />
             <Route
               path="/login"
               element={

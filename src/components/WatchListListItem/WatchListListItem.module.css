@@ -1,6 +1,6 @@
 .item {
   position: relative;
-  background-color: rgb(31, 32, 32);
+  background-color: rgb(31, 32, 32, 0.1);
   color: wheat;
   font-size: 22px;
   display: flex;

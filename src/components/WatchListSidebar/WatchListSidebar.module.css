@@ -1,0 +1,20 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  gap: 35px;
+}
+
+.sidebar_container {
+  display: none;
+  width: 468px;
+  background-color: rgb(68, 66, 64);
+  min-height: 468px;
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+    /* max-width: 1440px; */
+    display: block;
+  }
+}

@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   max-width: 428px;
   margin: 0 auto;
-  padding: 0 26px;
+  /* padding: 0 26px; */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -17,5 +17,7 @@ export const Container = styled.div`
     display: flex;
     /* flex-direction: column; */
     max-width: 1440px;
+    gap: 35px;
+    justify-content: space-between;
   }
 `;

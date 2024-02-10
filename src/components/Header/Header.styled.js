@@ -15,7 +15,7 @@ export const HeaderContainer = styled.header`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1280px) {
-    max-width: 1330px;
+    max-width: 1440px;
   }
 `;
 
@@ -29,7 +29,7 @@ export const HeaderBurgerIcon = styled(RxHamburgerMenu)`
 `;
 
 export const Nav = styled.nav`
-  display: flex;
+  display: none;
 
   margin-right: auto;
   padding: 10px 0;
@@ -37,5 +37,12 @@ export const Nav = styled.nav`
   color: #858585;
   a:hover {
     color: white;
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    max-width: 1330px;
   }
 `;
