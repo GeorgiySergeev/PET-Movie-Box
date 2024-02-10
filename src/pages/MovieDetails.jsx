@@ -11,6 +11,7 @@ import {
   StyledLi,
 } from '../components/MovieDetailsCard/MovieDetailsCard.styled';
 
+import { selectWatchlist } from '../redux/watchlist/watchlist-selectors';
 import {
   Link,
   NavLink,
@@ -20,19 +21,30 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Reviews = lazy(() => import('components/Reviews/Reviews'));
 const Cast = lazy(() => import('components/Cast/Cast'));
 
 const MovieDetails = () => {
+  const watchlist = useSelector(selectWatchlist);
   const [isLoading, setLoading] = useState(false);
   const [movieCard, setMovieCard] = useState({});
   const { movieId } = useParams();
+  const [inWatchlist, setInWatchlist] = useState(false);
 
   const location = useLocation();
   const backHomeLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
+    const movieIdAsNumber = parseInt(movieId, 10);
+
+    const exists = watchlist.some(item => item.id === movieIdAsNumber);
+    setInWatchlist(exists);
+  }, [movieId, watchlist]);
+
+  useEffect(() => {
     setLoading(true);
+
     async function fetchMovie() {
       if (!movieId) return;
       try {
@@ -47,7 +59,7 @@ const MovieDetails = () => {
     }
 
     fetchMovie();
-  }, [movieId]);
+  }, [movieId, watchlist]);
 
   return (
     <Container>
@@ -56,7 +68,10 @@ const MovieDetails = () => {
       </Link>
 
       {isLoading && <LoadingSpinner />}
-      <MovieDetailsCard card={movieCard}></MovieDetailsCard>
+      <MovieDetailsCard
+        card={movieCard}
+        isAdded={inWatchlist}
+      ></MovieDetailsCard>
 
       <List style={{ marginBottom: 25 }}>
         <StyledLi>

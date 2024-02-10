@@ -18,7 +18,7 @@ const Home = () => {
 
   const isLoading = useSelector(selectLoading);
   const movies = useSelector(selectMovies);
-  // console.log('movies', movies);
+
   const dispatch = useDispatch();
 
   // const [query, setQuery] = useSearchParams();

@@ -6,7 +6,7 @@ import { ReactComponent as IconHigh } from '../../assets/icons/great _ 80.svg';
 import defaultImg from '../../assets/default-img/no-available-image.png';
 import { formatDate } from '../../servises/date';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addMovie, removeMovie } from '../../redux/watchlist/watchlist-slice';
 
 import {
@@ -17,6 +17,8 @@ import {
   IconAddToListStyled,
 } from './MovieCard.styled';
 import { useState } from 'react';
+import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
+import { Notify } from 'notiflix';
 
 export const MovieCard = ({
   id,
@@ -34,8 +36,13 @@ export const MovieCard = ({
   const formatedDataAlt = formatDate(first_air_date);
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(isAdded);
+  const isLoggedin = useSelector(selectIsLogedIn);
 
   const handlerAddMovieToggle = () => {
+    if (!isLoggedin) {
+      Notify.failure('Please, enter your accaunt');
+      return;
+    }
     setIsChecked(prev => (prev = !prev));
 
     isChecked
@@ -50,6 +57,7 @@ export const MovieCard = ({
             // first_air_date,
             vote_average,
             // added: isChecked,
+            isWatched: false,
           })
         );
   };

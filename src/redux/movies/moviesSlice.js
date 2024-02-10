@@ -36,9 +36,10 @@ const movieSlise = createSlice({
     builder
       .addCase(API.fetchTopMovies.pending, handlePending)
       .addCase(API.fetchTopMovies.fulfilled, (state, action) => {
+        state.totalPage = action.payload.total_pages;
         state.isLoading = false;
         state.error = null;
-        state.movies = action.payload;
+        state.movies = action.payload.results;
       })
       .addCase(API.fetchTopMovies.rejected, handleRejected)
       .addCase(API.fetchSearchedMovies.pending, handlePending)

@@ -65,7 +65,7 @@ export const Header = () => {
       <SearchForm />
 
       {isLoggedIn ? (
-        <LoginButton onClick={handleLogout} text={'Log Out'} user={userEmail} />
+        <LoginButton onClick={handleLogout} user={userEmail} />
       ) : (
         <Link to="/login">
           <LoginButton text={'Log In'} />

@@ -97,8 +97,21 @@
 }
 
 .item_isWarched_icon {
+  fill: var(--sucsess);
   position: absolute;
   top: 15px;
   right: 180px;
   cursor: pointer;
+}
+
+.isWatched {
+  fill: var(--primary-accent);
+  /* Ваши стили для активного состояния */
+}
+
+.item_isWatched {
+  position: absolute;
+  top: 12px;
+  right: 210px;
+  color: var(--primary-accent);
 }

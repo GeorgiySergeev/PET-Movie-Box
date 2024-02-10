@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { convertMinutesToHoursAndMinutes } from 'servises/minutesTohours';
 import defaultImg from '../../assets/default-img/no-available-image.png';
 import { AddToListButton } from 'components/Sidebar/Sidebar.styled';
+import { addMovie, removeMovie } from '../../redux/watchlist/watchlist-slice';
 
 import {
   Image,
@@ -13,29 +14,53 @@ import {
   TextOverview,
   ScoreBox,
 } from './MovieDetailsCard.styled';
+import { useDispatch, useSelector } from 'react-redux';
+// import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
+import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
 
 const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
-export const MovieDetailsCard = ({ card }) => {
-  const [buttonText, setButtonText] = useState('Add to Watchlist');
-
-  const handleClick = () => {
-    setButtonText(prevText =>
-      prevText === 'Add to Watchlist'
-        ? 'Remove from tchlist'
-        : 'Add to Watchlist'
-    );
-  };
-
+export const MovieDetailsCard = ({ card, isAdded }) => {
   const {
+    id,
     title,
     poster_path,
-    // release_date,
+    release_date,
     overview,
     genres,
     runtime,
     vote_count,
   } = card;
+
+  const img = poster_path;
+  const relise = release_date;
+
+  const [buttonText, setButtonText] = useState('fdf');
+  const dispatch = useDispatch();
+  const isLoggedin = useSelector(selectIsLogedIn);
+
+  useEffect(() => {
+    const text = isAdded ? 'Remove from wtchlist' : 'Add to Watchlist';
+    setButtonText(text);
+  }, [isAdded]);
+
+  const handleClick = () => {
+    if (!isLoggedin) return;
+    // setButtonText(prevText =>
+    //   prevText === 'Add to Watchlist'
+    //     ? 'Remove from tchlist'
+    //     : 'Add to Watchlist'
+    // );
+
+    if (buttonText === 'Add to Watchlist') {
+      dispatch(addMovie({ id, title, img, relise }));
+      setButtonText('Remove from Watchlist');
+    } else {
+      dispatch(removeMovie(id));
+      setButtonText('Add to Watchlist');
+    }
+  };
+
   return (
     <>
       <HeadWrapper>

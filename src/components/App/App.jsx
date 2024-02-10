@@ -7,7 +7,7 @@ import ErrorBoundary from '../ErrorDoundory/ErrorBoundary';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
   PrivatRoute,
   PrivatRouteAuth,
@@ -18,7 +18,7 @@ import { setIsLoggedIn } from '../../redux/auth/auth-slice';
 
 // import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
 
-import { selectCurrentUserId } from '../../redux/auth/auth-selectors';
+// import { selectCurrentUserId } from '../../redux/auth/auth-selectors';
 const Home = lazy(() => import('pages/Home'));
 const Search = lazy(() => import('pages/Search'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -33,9 +33,9 @@ const NotFound = lazy(() => import('pages/404page'));
 export const App = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
-  const currentUserId = `${useSelector(selectCurrentUserId)}`;
+  // const currentUserId = `${useSelector(selectCurrentUserId)}`;
   // const watchlist = useSelector(selectWatchlist);
-  console.log(currentUserId);
+  // console.log(currentUserId);
 
   // useEffect(() => {
   //   console.log(watchlist);

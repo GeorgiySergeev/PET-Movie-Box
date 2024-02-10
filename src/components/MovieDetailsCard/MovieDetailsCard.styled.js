@@ -41,7 +41,7 @@ export const ScoreBox = styled.div`
   flex-direction: column;
   /* justify-content: center; */
   /* width: 131px; */
-  height: 95px;
+  /* height: 95px; */
   border: 1px solid #a41b1b;
   border-radius: 8px;
   text-align: center;

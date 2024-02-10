@@ -107,12 +107,12 @@ const LoginForm = () => {
         };
         // Успешный вход
         // dispatch(setIsLoggedIn(credentials?.user?.emailVerified));
-        console.log('User is logged in');
 
         dispatch(setUser(userObj));
         // getUserData(userId);
 
         // downloadMoviesFromStorage(userId);
+        console.log('User is logged in');
       })
       .catch(error => {
         // Ошибка входа

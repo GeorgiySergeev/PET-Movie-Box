@@ -27,7 +27,6 @@ export const googleAuthProvider = new GoogleAuthProvider();
 // const analytics = getAnalytics(app);
 
 export function writeUserData(userId, watchlist) {
-  console.log(userId);
   if (userId === null) return;
   const db = getDatabase();
   const reference = ref(db, 'users/' + userId);
@@ -54,7 +53,7 @@ export const getUserData = userId => {
     const userData = snapshot.val();
 
     if (userData) {
-      console.log('User data:', userData.watchlist);
+      // console.log('User data:', userData.watchlist);
       setWatchList(userData.watchlist);
       return;
 

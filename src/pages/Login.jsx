@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <div style={{ maxWidth: 1280, margin: '0 auto' }}>
       <Header></Header>
-      <h1>LOGIN PAGE</h1>
+      {/* <h1>LOGIN PAGE</h1> */}
       {/* {error && Report.failure('Invalid email or password!')} */}
 
       <LoginForm />
