@@ -1,1 +1,1 @@
-# PET project MovieBox React App
+# PET Project MovieBox React App
