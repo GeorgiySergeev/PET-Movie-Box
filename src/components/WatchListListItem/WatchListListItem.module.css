@@ -21,6 +21,12 @@
   flex-direction: column;
   gap: 10px;
 }
+.item_title {
+  color: #fff;
+}
+.item_date {
+  font-size: 14px;
+}
 /* .item_checkbox {
   position: absolute;
   right: 5px;
@@ -96,11 +102,11 @@
   font-size: 12px;
 }
 
-.item_isWarched_icon {
+.item_isWatched_icon {
   fill: var(--sucsess);
   position: absolute;
   top: 15px;
-  right: 180px;
+  right: 10px;
   cursor: pointer;
 }
 

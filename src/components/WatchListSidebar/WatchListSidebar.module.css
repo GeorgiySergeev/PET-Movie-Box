@@ -10,6 +10,9 @@
   width: 468px;
   background-color: rgb(68, 66, 64);
   min-height: 468px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 15px;
 
   @media screen and (min-width: 768px) {
   }
@@ -17,4 +20,8 @@
     /* max-width: 1440px; */
     display: block;
   }
+}
+
+.title {
+  text-align: center;
 }

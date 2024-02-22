@@ -2,7 +2,7 @@ import css from './WatchListList.module.css';
 import WatchListListItem from 'components/WatchListListItem/WatchListListItem';
 
 const WatchListList = ({ watchlist }) => {
-  // console.log(watchlist);
+  console.log(watchlist);
 
   return (
     <>

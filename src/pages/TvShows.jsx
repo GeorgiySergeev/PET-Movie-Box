@@ -10,6 +10,7 @@ const TvShows = () => {
   const [page, setPage] = useState(1);
   const movies = useSelector(selectMovies);
   const totalPages = useSelector(selectTotalPage);
+  // console.log(movies);
 
   const dispatch = useDispatch();
 

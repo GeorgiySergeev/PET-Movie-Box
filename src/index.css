@@ -115,4 +115,6 @@ button {
 
 .active {
   color: #f33f3f;
+  font-weight: 900;
+  font-size: 110%;
  }

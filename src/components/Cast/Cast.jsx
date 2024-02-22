@@ -7,6 +7,7 @@ import { CastList } from './Cast.styled';
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
+  console.log(cast);
 
   useEffect(() => {
     const fathMovie = async () => {

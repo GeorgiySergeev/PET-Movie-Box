@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-const API_KEY = '4c0e7f751de589a214c7a7cb256ddfec';
-
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 axios.defaults.params = {
@@ -76,8 +74,8 @@ export const getFilteredMovies = async (genre, page) => {
     },
     headers: {
       accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzBlN2Y3NTFkZTU4OWEyMTRjN2E3Y2IyNTZkZGZlYyIsInN1YiI6IjY1NzlhY2ZmNGJmYTU0NWNmZDc4ZjJkMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrQqms9_kLUcLnzlIObzup4rDnJS1QBqZV9NRJ0lfE4',
+      // Authorization:
+      //   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzBlN2Y3NTFkZTU4OWEyMTRjN2E3Y2IyNTZkZGZlYyIsInN1YiI6IjY1NzlhY2ZmNGJmYTU0NWNmZDc4ZjJkMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrQqms9_kLUcLnzlIObzup4rDnJS1QBqZV9NRJ0lfE4',
     },
   };
   const response = await axios(options.url, {
@@ -94,37 +92,3 @@ export const getAllTrendingTvShow = async period => {
   //   console.log(response.data.results);
   return response.data.results;
 };
-
-// export const sortByGenreRedux = async data => {
-//   const adjustedPage = data.page + 1;
-//   // console.log('sortByGenre called with genre:', genre, 'and page:', page);
-
-//   const options = {
-//     method: 'GET',
-//     url: 'https://api.themoviedb.org/3/discover/movie',
-//     params: {
-//       include_adult: 'false',
-//       include_video: 'false',
-//       language: 'en-US',
-//       page: adjustedPage,
-//       sort_by: 'popularity.desc',
-//       with_genres: data.genre,
-//       'release_date.gte': data.from,
-//       'release_date.lte': data.to,
-//       primary_release_year: data.year,
-//     },
-//     headers: {
-//       accept: 'application/json',
-//       Authorization:
-//         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YzBlN2Y3NTFkZTU4OWEyMTRjN2E3Y2IyNTZkZGZlYyIsInN1YiI6IjY1NzlhY2ZmNGJmYTU0NWNmZDc4ZjJkMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BrQqms9_kLUcLnzlIObzup4rDnJS1QBqZV9NRJ0lfE4',
-//     },
-//   };
-//   const response = await axios(options.url, {
-//     method: 'GET',
-//     params: options.params,
-//     headers: options.headers,
-//   });
-//   console.log(response.data.results);
-
-//   return response.data.results;
-// };

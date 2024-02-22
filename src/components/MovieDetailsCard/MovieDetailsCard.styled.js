@@ -6,28 +6,32 @@ export const Container = styled.div`
 `;
 
 export const HeadWrapper = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
-  gap: 45px;
+
   margin-bottom: 45px;
   border: 1px solid gray;
   border-radius: 8px;
 `;
 export const InfoWrapper = styled.div`
   /* width: 100%; */
-  width: 645px;
-  /* padding: 15px;
-  padding-right: 35px; */
+  /* width: 645px; */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Image = styled.img`
-  width: 300px;
-  height: 475px;
+  min-width: 350px;
+  min-height: 475px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
 `;
 
 export const Title = styled.h2`
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 46px;
+  margin: 10px 0px;
   font-family: 'Lato', sans-serif;
 `;
 export const TitleSecond = styled.h2`
@@ -47,6 +51,7 @@ export const ScoreBox = styled.div`
   text-align: center;
   padding: 15px;
   background-color: #3b3b3b;
+  margin-top: auto;
 
   p {
     display: block;
@@ -60,6 +65,7 @@ export const ScoreBox = styled.div`
 `;
 
 export const TextOverview = styled.p`
+  display: block;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   line-height: 2.5cap;

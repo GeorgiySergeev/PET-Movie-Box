@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const API_KEY = '4c0e7f751de589a214c7a7cb256ddfec';
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const options = {
   method: 'GET',
   url: 'https://api.themoviedb.org/3/authentication/token/new',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer 4c0e7f751de589a214c7a7cb256ddfec',
+    Authorization: process.env.REACT_APP_TMDB_AUTH,
   },
 };
 
@@ -36,7 +36,7 @@ export const validateTokenWithLogin = async (
       },
       {
         params: {
-          api_key: API_KEY, // Замените YOUR_API_KEY на ваш собственный ключ API
+          api_key: API_KEY,
         },
         headers: {
           'Content-Type': 'application/json',

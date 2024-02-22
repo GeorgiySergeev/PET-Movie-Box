@@ -1,23 +1,17 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
-// import { getAnalytics } from 'firebase/analytics';
+
 import { GoogleAuthProvider } from 'firebase/auth';
 import { setWatchList } from '../redux/watchlist/watchlist-slice';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyDj-YA1M2571KnT1Y0QDeLajiw5G_cDkAU',
-  authDomain: 'moviebox-9de56.firebaseapp.com',
-  projectId: 'moviebox-9de56',
-  storageBucket: 'gs://moviebox-9de56.appspot.com',
-  messagingSenderId: '211296617028',
-  appId: '1:211296617028:web:7c50179f0e25e8f2117211',
-  measurementId: 'G-3XV3TN6DZZ',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -48,20 +42,14 @@ const db = getDatabase();
 export const getUserData = userId => {
   const userRef = ref(db, `users/${userId}`);
 
-  // Устанавливаем слушатель изменений данных
   onValue(userRef, snapshot => {
     const userData = snapshot.val();
 
     if (userData) {
-      // console.log('User data:', userData.watchlist);
       setWatchList(userData.watchlist);
       return;
-
-      // Далее вы можете использовать userData по вашему усмотрению
     } else {
       console.log('User not found');
     }
   });
 };
-
-// getUserData('Rwge4PJFryXdqs5OUfPdYXdT6Sb2');

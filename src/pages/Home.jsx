@@ -18,6 +18,8 @@ const Home = () => {
 
   const isLoading = useSelector(selectLoading);
   const movies = useSelector(selectMovies);
+  // console.log(movies);
+  // const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
   const dispatch = useDispatch();
 

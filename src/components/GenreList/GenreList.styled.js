@@ -15,11 +15,16 @@ export const GenreListWrapper = styled.div`
 export const GenreListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
+
   /* flex-direction: column; */
   gap: 10px;
-  li:hover {
-    scale: 101%;
+  a:hover {
+    scale: 105%;
     color: #f33f3f;
+  }
+  a {
+    padding: 3px;
+    margin-right: 15px;
   }
 `;
 

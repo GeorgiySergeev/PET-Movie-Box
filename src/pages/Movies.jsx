@@ -23,7 +23,7 @@ const Movies = () => {
 
   return (
     <>
-      <h1>Top Rated Movies</h1>
+      {/* <h1>Top Rated Movies</h1> */}
       {/* <TopBar
         title={'Movie search on'}
         span={'MovieBox'}

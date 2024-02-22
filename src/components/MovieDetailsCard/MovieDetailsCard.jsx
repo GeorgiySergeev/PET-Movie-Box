@@ -4,6 +4,8 @@ import defaultImg from '../../assets/default-img/no-available-image.png';
 import { AddToListButton } from 'components/Sidebar/Sidebar.styled';
 import { addMovie, removeMovie } from '../../redux/watchlist/watchlist-slice';
 
+import { formatDate } from 'servises/date';
+
 import {
   Image,
   HeadWrapper,
@@ -21,6 +23,7 @@ import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
 const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
 export const MovieDetailsCard = ({ card, isAdded }) => {
+  // console.log(card);
   const {
     id,
     title,
@@ -30,6 +33,9 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
     genres,
     runtime,
     vote_count,
+    backdrop_path,
+    tagline,
+    production_companies,
   } = card;
 
   const img = poster_path;
@@ -53,7 +59,7 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
     // );
 
     if (buttonText === 'Add to Watchlist') {
-      dispatch(addMovie({ id, title, img, relise }));
+      dispatch(addMovie({ id, title, img, relise, backdrop_path }));
       setButtonText('Remove from Watchlist');
     } else {
       dispatch(removeMovie(id));
@@ -72,7 +78,15 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
 
         <InfoWrapper>
           <Title>{title}</Title>
-          <div style={{ display: 'flex', marginBottom: 50, maxWidth: 580 }}>
+          <h4 style={{ fontStyle: 'italic', marginBottom: 15 }}>{tagline}</h4>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: 15,
+              maxWidth: 580,
+              gap: 15,
+            }}
+          >
             <List>
               {genres &&
                 genres.map(({ id, name }) => {
@@ -82,7 +96,25 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
             <p style={{ color: 'yellow' }}>
               {convertMinutesToHoursAndMinutes(runtime)}
             </p>
+            <p style={{ color: 'f33f3f' }}>{formatDate(release_date)}</p>
           </div>
+          <List style={{ display: 'flex', alignItems: 'center' }}>
+            {' '}
+            {production_companies &&
+              production_companies.map(({ logo_path }, i) => {
+                return (
+                  <li key={i}>
+                    <img
+                      style={{ width: 55 }}
+                      src={
+                        logo_path ? `${BASIC_IMG_URL}${logo_path}` : defaultImg
+                      }
+                      alt="poster"
+                    />
+                  </li>
+                );
+              })}
+          </List>
           <TitleSecond>Overview</TitleSecond>
           <TextOverview>{overview}</TextOverview>
           <div
@@ -90,6 +122,7 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
               display: 'flex',
               alignItems: 'end',
               justifyContent: 'space-between',
+              // paddingBottom: 15,
             }}
           >
             <ScoreBox>

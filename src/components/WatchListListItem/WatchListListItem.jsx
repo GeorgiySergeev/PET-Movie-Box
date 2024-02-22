@@ -9,7 +9,7 @@ import {
 import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 
 import { MdOutlineDeleteSweep } from 'react-icons/md';
-import { PiNotepadDuotone } from 'react-icons/pi';
+// import { PiNotepadDuotone } from 'react-icons/pi';
 import { GoChecklist } from 'react-icons/go';
 import { useDispatch } from 'react-redux';
 // import { useEffect, useState } from 'react';
@@ -19,7 +19,7 @@ const WatchListListItem = movie => {
   const location = useLocation();
   const dispatch = useDispatch();
   const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
-  // console.log(movie.isWatched);
+  // console.log(movie);
 
   const onDeliteContact = id => {
     Confirm.show(
@@ -50,24 +50,24 @@ const WatchListListItem = movie => {
         />
       </Link>
       <div className={css.item_info}>
-        <p>{movie.title}</p>
-        <p>{formatDate(movie.relise)}</p>
+        <p className={css.item_title}>{movie.title}</p>
+        <p className={css.item_date}> {formatDate(movie.relise)}</p>
         <p>{movie.rating}</p>
-        <p>{movie.title}</p>
+        {/* <p>{movie.title}</p> */}
       </div>
 
       <MdOutlineDeleteSweep
         className={css.item_delete_icon}
         onClick={onDeliteContact}
       />
-      <input className={css.item_checkbox} type="checkbox" />
-      <button className={css.item_addNote_button}>
+      {/* <input className={css.item_checkbox} type="checkbox" /> */}
+      {/* <button className={css.item_addNote_button}>
         <PiNotepadDuotone className={css.item_addNote_icon} />
         <p className={css.item_addNote_text}>Add note</p>
-      </button>
+      </button> */}
 
       <GoChecklist
-        className={`${css.item_isWarched_icon} ${
+        className={`${css.item_isWatched_icon} ${
           movie.isWatched ? css.isWatched : ''
         }`}
         onClick={handlerClickIsWatched}

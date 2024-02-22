@@ -8,9 +8,9 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  padding: 10px 0;
+  padding: 10px 15px;
 
-  border-bottom: 1px solid var(--dark);
+  /* border-bottom: 1px solid var(--dark); */
 
   @media screen and (min-width: 768px) {
   }
