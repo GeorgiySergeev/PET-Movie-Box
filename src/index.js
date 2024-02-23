@@ -12,13 +12,13 @@ import { store, persistor } from './redux/store';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <BrowserRouter basename="/PET-Movie-Box">
-    <PersistGate persistor={persistor}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </PersistGate>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </PersistGate>
+    </BrowserRouter>
+  </React.StrictMode>
 );

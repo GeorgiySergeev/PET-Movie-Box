@@ -2,7 +2,6 @@
   "name": "pet-project-movie-box",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GeorgiySergeev.github.io/PET-Movie-Box/",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.6",
