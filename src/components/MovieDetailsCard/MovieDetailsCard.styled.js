@@ -16,7 +16,7 @@ export const HeadWrapper = styled.div`
 export const InfoWrapper = styled.div`
   /* width: 100%; */
   /* width: 645px; */
-  padding: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,8 +27,8 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  min-width: 350px;
-  min-height: 475px;
+  /* min-width: 350px; */
+  /* min-height: 475px; */
   /* width: 100%; */
   /* height: 100%; */
   border-bottom-left-radius: 8px;
@@ -37,8 +37,9 @@ export const Image = styled.img`
 
 export const Title = styled.h2`
   font-size: 46px;
-  margin: 10px 0px;
+
   font-family: 'Lato', sans-serif;
+  color: var(--primary-accent);
 `;
 export const TitleSecond = styled.h2`
   font-size: 26px;

@@ -30,6 +30,7 @@ export const HeaderBurgerIcon = styled(RxHamburgerMenu)`
 
 export const Nav = styled.nav`
   display: none;
+  align-items: center;
 
   margin-right: auto;
   padding: 10px 0;

@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+// import { useSearchParams } from 'react-router-dom';
+import { Gallery } from 'components/Gallery/Gallery';
+import { TopBar } from 'components/Topbar/Topbar';
+import text from '../servises/constant';
 
 import { GalleryTitle } from 'components/GalleryTitle/GalleryTitle';
 // import { MobileHeader } from 'components/Mobile/Header/MobileHeader';
-import { Gallery } from 'components/Gallery/Gallery';
 // import { Sidebar } from 'components/Sidebar/Sidebar';
 // import { SearchForm } from 'components/SearchForm/SearchForm';
-import { TopBar } from 'components/Topbar/Topbar';
 
-import text from '../servises/constant';
 import { selectLoading, selectMovies } from '../redux/movies/selectors';
 import { fetchTopMovies } from '../redux/movies/operations';
 
@@ -53,7 +53,7 @@ const Home = () => {
         <TopBar title={'Welcome to'} span={'MovieBox'} text={text}></TopBar>
       ) : null}
       {/* <SearchForm /> */}
-      <GalleryTitle text={'Trending movies'} />
+      <GalleryTitle text={'Popular Movies'} />
       <Gallery gallery={movies}></Gallery>
     </>
   );

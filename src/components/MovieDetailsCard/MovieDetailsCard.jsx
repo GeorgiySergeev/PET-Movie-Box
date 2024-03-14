@@ -12,7 +12,7 @@ import {
   InfoWrapper,
   Title,
   List,
-  TitleSecond,
+  // TitleSecond,
   TextOverview,
   ScoreBox,
   // ImageWrapper,
@@ -22,7 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
 import { Notify } from 'notiflix';
 
-const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
+const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w400';
 
 export const MovieDetailsCard = ({ card, isAdded }) => {
   // console.log(card);
@@ -79,7 +79,8 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
 
         <InfoWrapper>
           <Title>{title}</Title>
-          <h4 style={{ fontStyle: 'italic', marginBottom: 15 }}>{tagline}</h4>
+          <p style={{ color: 'tomato' }}>{formatDate(release_date)}</p>
+          <h3 style={{ fontStyle: 'italic', marginBottom: 15 }}>{tagline}</h3>
           <div
             style={{
               display: 'flex',
@@ -97,10 +98,6 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
             </List>
             <p style={{ color: 'yellow' }}>
               {convertMinutesToHoursAndMinutes(runtime)}
-            </p>
-            <p style={{ color: 'f33f3f' }}>
-              {' '}
-              Release date: {formatDate(release_date)}
             </p>
           </div>
           <List
@@ -127,7 +124,7 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
                 );
               })}
           </List>
-          <TitleSecond>Overview</TitleSecond>
+          {/* <TitleSecond>Overview</TitleSecond> */}
           <TextOverview>{overview}</TextOverview>
           <div
             style={{
