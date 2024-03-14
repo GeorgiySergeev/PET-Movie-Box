@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { convertMinutesToHoursAndMinutes } from 'servises/minutesTohours';
 import defaultImg from '../../assets/default-img/no-available-image.png';
-import { AddToListButton } from 'components/Sidebar/Sidebar.styled';
+import { WatchListButton } from 'components/Sidebar/Sidebar.styled';
 import { addMovie, removeMovie } from '../../redux/watchlist/watchlist-slice';
 
 import { formatDate } from 'servises/date';
@@ -138,9 +138,9 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
               <p>Score</p>
               <h3>{vote_count}</h3>
             </ScoreBox>
-            <AddToListButton style={{ width: 239 }} onClick={handleClick}>
+            <WatchListButton style={{ width: 239 }} onClick={handleClick}>
               {buttonText}
-            </AddToListButton>
+            </WatchListButton>
           </div>
         </InfoWrapper>
       </HeadWrapper>

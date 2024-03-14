@@ -7,8 +7,8 @@ export const SidebarContainer = styled.div`
 
   width: 269px;
 
-  padding: 68px 15px 15px 15px;
-  height: 820px;
+  padding: 25px 15px 15px 15px;
+  height: 880px;
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -89,11 +89,12 @@ export const HeadTitle = styled.h1`
   font-size: 48px;
 `;
 
-export const AddToListButton = styled.button`
+export const WatchListButton = styled.button`
   width: 100%;
   height: 41px;
   background-color: #f33f3f;
   color: #141414;
+  font-weight: 700;
 
   border-radius: 8px;
   :hover {

@@ -6,7 +6,7 @@ import {
   SidebarContainer,
   Nav,
   HeadTitle,
-  AddToListButton,
+  WatchListButton,
 } from './Sidebar.styled';
 // import Filter from '../Filter/Filter';
 
@@ -25,7 +25,7 @@ export const Sidebar = () => {
       <HeadTitle>MovieBox</HeadTitle>
       <Nav></Nav>
       <Link to={'/watchlist'}>
-        <AddToListButton>My watchlist</AddToListButton>
+        <WatchListButton>My watchlist</WatchListButton>
       </Link>
       {!shouldShowComponent && <GenreList></GenreList>}
       {shouldShowComponent && <div></div>}

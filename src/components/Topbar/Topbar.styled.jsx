@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const TopBarWrapper = styled.div`
   position: relative;
   max-width: 1106px;
-  height: 420px;
+  height: 380px;
   margin-bottom: 25px;
   border-radius: 8px;
   /* padding: 20px; */
@@ -17,7 +17,7 @@ export const TopBarWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(86, 86, 86, 0.6);
+    background-color: rgba(86, 86, 86, 0.8);
     z-index: 10; /* Выставим z-index поверх слайдера (обычно слайдеры имеют z-index: 0 по умолчанию) */
   }
 `;
@@ -46,7 +46,7 @@ export const TopBarText = styled.p`
   left: 20px;
   font-size: 18px;
   font-family: 'Archivo', sans-serif;
-  color: #e1e1e1;
+  color: #ffffff;
   width: 380px;
   margin-bottom: 13px;
   line-height: 28px;
