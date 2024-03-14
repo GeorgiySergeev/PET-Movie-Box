@@ -13,6 +13,7 @@ import { app } from '../../servises/firebase-auth';
 import { removeUser } from '../../redux/auth/auth-slice';
 
 import { claerWatchlist } from '../../redux/watchlist/watchlist-slice';
+import { Confirm } from 'notiflix';
 
 export const Header = () => {
   const auth = getAuth(app);
@@ -21,18 +22,29 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    Confirm.show(
+      ' ',
+      'Exit from account?',
+      'Yes',
+      'No',
+      () => {
+        signOut(auth)
+          .then(() => {
+            // console.log('log out');
+            // Успешный выход
+            dispatch(removeUser());
+            dispatch(claerWatchlist());
+          })
+          .catch(error => {
+            // Ошибка выхода
+            console.log('Logout Error:', error.message);
+          });
+      },
+      () => {
+        return;
+      }
+    );
     // console.log('logout');
-    signOut(auth)
-      .then(() => {
-        // console.log('log out');
-        // Успешный выход
-        dispatch(removeUser());
-        dispatch(claerWatchlist());
-      })
-      .catch(error => {
-        // Ошибка выхода
-        console.log('Logout Error:', error.message);
-      });
   };
 
   return (

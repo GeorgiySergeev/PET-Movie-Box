@@ -22,9 +22,15 @@ export const InfoWrapper = styled.div`
   justify-content: space-between;
 `;
 
+export const ImageWrapper = styled.div`
+  width: 650px;
+`;
+
 export const Image = styled.img`
   min-width: 350px;
   min-height: 475px;
+  /* width: 100%; */
+  /* height: 100%; */
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
 `;

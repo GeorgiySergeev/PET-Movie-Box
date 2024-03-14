@@ -50,9 +50,6 @@ export const App = () => {
       if (currentUser === null) {
         dispatch(setIsLoggedIn(false));
       }
-
-      // Обновление состояния вашего компонента, например, установка локального состояния
-      // setUse({ email: currentUser.email, token: currentUser.accessToken, ... });
     });
     dispatch(setIsLoggedIn(true));
 

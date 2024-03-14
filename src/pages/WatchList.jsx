@@ -34,7 +34,7 @@ const WatchList = () => {
     <>
       <Header />
       <div className={css.container}>
-        <WatchListSidebar />
+        {/* <WatchListSidebar /> */}
         {/* <h1>Watchlist</h1> */}
         <WatchListList watchlist={displayItems} />
         {/* Render pagination component only if there are more than itemsPerPage items */}

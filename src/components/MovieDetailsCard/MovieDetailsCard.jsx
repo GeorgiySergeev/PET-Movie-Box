@@ -15,10 +15,12 @@ import {
   TitleSecond,
   TextOverview,
   ScoreBox,
+  ImageWrapper,
 } from './MovieDetailsCard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 // import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
 import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
+import { Notify } from 'notiflix';
 
 const BASIC_IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
@@ -51,12 +53,10 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
   }, [isAdded]);
 
   const handleClick = () => {
-    if (!isLoggedin) return;
-    // setButtonText(prevText =>
-    //   prevText === 'Add to Watchlist'
-    //     ? 'Remove from tchlist'
-    //     : 'Add to Watchlist'
-    // );
+    if (!isLoggedin) {
+      Notify.failure('Please, enter your account');
+      return;
+    }
 
     if (buttonText === 'Add to Watchlist') {
       dispatch(addMovie({ id, title, img, relise, backdrop_path }));
@@ -70,6 +70,7 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
   return (
     <>
       <HeadWrapper>
+        {/* <ImageWrapper></ImageWrapper> */}
         {poster_path ? (
           <Image src={`${BASIC_IMG_URL}${poster_path}`} alt={title} />
         ) : (
@@ -88,6 +89,7 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
             }}
           >
             <List>
+              <h4>Genre: </h4>
               {genres &&
                 genres.map(({ id, name }) => {
                   return <li key={id}> {name}</li>;
@@ -96,9 +98,19 @@ export const MovieDetailsCard = ({ card, isAdded }) => {
             <p style={{ color: 'yellow' }}>
               {convertMinutesToHoursAndMinutes(runtime)}
             </p>
-            <p style={{ color: 'f33f3f' }}>{formatDate(release_date)}</p>
+            <p style={{ color: 'f33f3f' }}>
+              {' '}
+              Release date: {formatDate(release_date)}
+            </p>
           </div>
-          <List style={{ display: 'flex', alignItems: 'center' }}>
+          <List
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginTop: 5,
+              marginBottom: 5,
+            }}
+          >
             {' '}
             {production_companies &&
               production_companies.map(({ logo_path }, i) => {

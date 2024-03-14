@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 export const HeaderContainer = styled.header`
-  max-width: 376px;
+  /* max-width: 376px; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

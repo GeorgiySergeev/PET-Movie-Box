@@ -40,7 +40,7 @@ export const MovieCard = ({
 
   const handlerAddMovieToggle = () => {
     if (!isLoggedin) {
-      Notify.failure('Please, enter your accaunt');
+      Notify.failure('Please, enter your account');
       return;
     }
     setIsChecked(prev => (prev = !prev));
