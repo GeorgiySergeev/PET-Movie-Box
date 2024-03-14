@@ -8,7 +8,7 @@ import { selectCurrentUserId } from '../redux/auth/auth-selectors';
 import { useEffect, useState } from 'react';
 import { writeUserData } from 'servises/firebase-auth';
 import { Header } from 'components/Header/Header';
-import WatchListSidebar from 'components/WatchListSidebar/WatchListSidebar';
+// import WatchListSidebar from 'components/WatchListSidebar/WatchListSidebar';
 
 const WatchList = () => {
   const [page, setPage] = useState(1);

@@ -15,7 +15,7 @@ import {
   TitleSecond,
   TextOverview,
   ScoreBox,
-  ImageWrapper,
+  // ImageWrapper,
 } from './MovieDetailsCard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 // import { selectWatchlist } from '../../redux/watchlist/watchlist-selectors';
