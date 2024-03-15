@@ -13,7 +13,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "axios": "^1.6.4",
     "dotenv": "^16.4.4",
-    "firebase": "^10.8.0",
+    "firebase": "^10.8.1",
     "notiflix": "^3.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
